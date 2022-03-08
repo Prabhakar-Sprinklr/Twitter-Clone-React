@@ -1,0 +1,24 @@
+.twitterIcon {
+    font-size: 50px !important;
+    margin-left: 20px;
+    margin-bottom: 0px;
+  }
+
+#page-header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-twitter-icon-link:hover {
+    cursor: pointer;
+}
+
+#header-twitter-icon-container{
+    display: flex;
+    padding-left: 50px;
+    background-color: aqua;
+    justify-content: space-between;
+    align-items: center;
+    /* border-radius: 20px; */
+}

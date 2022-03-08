@@ -1,0 +1,17 @@
+.image-container-div{
+    position: relative;
+}
+
+.tweet-image {
+    display: block;
+    margin: auto;
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 5px;
+}
+
+.profile-dp-main{
+    height: 300px;
+    width: 300px;
+    border-radius: 150px;
+}

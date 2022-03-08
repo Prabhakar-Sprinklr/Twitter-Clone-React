@@ -1,0 +1,26 @@
+.sidebar-navigation-link {
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-anchor-button {
+    display: flex;
+    width: 90%;
+    height: 60px;
+    font-size: 1rem;
+    background: white;
+    align-items: center;
+    padding-left: 10px;
+    border-radius: 20px;
+    /* border: 2px solid black; */
+}
+
+.sidebar-anchor-button:hover {
+    cursor:pointer;
+    background-color: grey;
+    color: white;
+}
+
+.sidebar-option-name{
+    padding-left: 10px;
+}

@@ -1,0 +1,29 @@
+.list-item-grid-view {
+    display: inline-block;
+    flex: 1 1 150px;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid lightgrey;
+}
+
+.friend-entity-grid-view{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.friend-details-container-grid-view{
+    align-items: center;
+    width: fit-content;
+    padding-left: 0px;
+}
+
+.username-grid-view {
+    width: fit-content;
+}
+
+.userid-grid-view {
+    width: fit-content;
+}

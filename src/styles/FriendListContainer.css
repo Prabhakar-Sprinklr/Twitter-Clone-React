@@ -1,0 +1,11 @@
+.friend-list-container {
+    flex: 0.6;
+    background-color: aliceblue;
+    height: 100vh;
+    overflow-y: scroll;
+    border-left: 2px solid grey;
+}
+
+.friend-list {
+    margin: 10px auto 10px 20px;
+}

@@ -1,0 +1,17 @@
+.user-profile-information {
+    flex: 0.4;
+    background-color: aliceblue;
+    height: 100vh;
+    border-right: 2px solid grey;
+    /* border-radius: 30px; */
+}
+
+.profile-information-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 70%;
+    margin: auto;
+}
