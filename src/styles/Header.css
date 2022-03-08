@@ -22,3 +22,12 @@
     align-items: center;
     /* border-radius: 20px; */
 }
+
+.view-toggle-button {
+    background: none;
+    border: none;
+}
+
+.view-toggle-button:hover{
+    cursor: pointer;
+}
