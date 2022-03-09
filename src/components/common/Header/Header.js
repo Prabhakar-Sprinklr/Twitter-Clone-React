@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import TwitterIcon from '@mui/icons-material/Twitter';
 import AppsIcon from '@mui/icons-material/Apps';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import '../styles/Header.css';
+import './Header.css';
 
 function Header({toggleButton,viewState,toggleFunction}) {
 

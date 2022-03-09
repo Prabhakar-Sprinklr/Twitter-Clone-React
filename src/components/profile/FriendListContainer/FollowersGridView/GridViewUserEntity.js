@@ -1,7 +1,7 @@
-import React from 'react'
-import "../styles/FollowersEntityCommon.css"
-import "../styles/FollowersEntityGridView.css"
-import profiePic from '../resources/batman2.jpeg'
+import React from 'react';
+import "../styles/FollowersEntityCommon.css";
+import "./FollowersEntityGridView.css";
+import profilePic from '../../../../resources/batman2.jpeg';
 
 /*
 Should get the user details to render the data
@@ -11,7 +11,7 @@ function GridViewUserEntity() {
     <li className="list-item-grid-view">
         <article className="friend-entity-grid-view">
             <div className="profile-pic-container">
-                <img className="tweet-profile-dp" src={profiePic} alt="Unable to load!" />
+                <img className="tweet-profile-dp" src={profilePic} alt="Unable to load!" />
             </div>
             <div className="friend-details-container friend-details-container-grid-view">
                 <address className="username username-grid-view">

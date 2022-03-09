@@ -1,6 +1,6 @@
 import React from 'react'
-import GridViewUserEntity from './GridViewUserEntity'
-import "../styles/FollowersEntityCommon.css"
+import GridViewUserEntity from './GridViewUserEntity';
+import "../styles/FollowersEntityCommon.css";
 
 function FollowersGridView() {
     let users = [];

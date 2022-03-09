@@ -1,5 +1,5 @@
 import React from 'react'
-import TweetEntity from './TweetEntity'
+import TweetEntity from './TweetEntity/TweetEntity'
 
 function TweetList() {
   return (

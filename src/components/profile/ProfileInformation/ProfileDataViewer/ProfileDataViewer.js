@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import '../styles/ProfileDataViewer.css'
+import './ProfileDataViewer.css'
 
 function ProfileDataViewer() {
   return (

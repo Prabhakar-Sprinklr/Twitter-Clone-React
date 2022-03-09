@@ -1,6 +1,6 @@
-import React from 'react'
-import "../styles/FollowersEntityCommon.css"
-import profiePic from '../resources/batman2.jpeg'
+import React from 'react';
+import "../styles/FollowersEntityCommon.css";
+import profilePic from '../../../../resources/batman2.jpeg';
 
 /*
 Should get the user details to render the data
@@ -10,7 +10,7 @@ function ListViewUserEntity() {
     <li>
         <article className="friend-entity">
             <div className="profile-pic-container">
-                <img className="tweet-profile-dp" src={profiePic} alt="Unable to load!" />
+                <img className="tweet-profile-dp" src={profilePic} alt="Unable to load!" />
             </div>
             <div className="friend-details-container">
                 <address className="username">

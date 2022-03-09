@@ -1,6 +1,6 @@
 import React from 'react'
-import profiePic from '../resources/batman2.jpeg'
-import '../styles/ProfileImageViewer.css'
+import profilePic from '../../../../resources/batman2.jpeg'
+import './ProfileImageViewer.css'
 
 
 function ProfileImageViewer() {
@@ -8,7 +8,7 @@ function ProfileImageViewer() {
     <div>
         <a href="../resources/batman-dp.jpeg">
             <div className="image-container-div">
-                <img className="tweet-image profile-dp-main" src={profiePic} alt='Error in loading!'/>
+                <img className="tweet-image profile-dp-main" src={profilePic} alt='Error in loading!'/>
             </div>
         </a>
     </div>

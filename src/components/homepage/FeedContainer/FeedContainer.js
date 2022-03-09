@@ -1,7 +1,7 @@
 import React from 'react'
-import '../styles/Homepage.css';
-import NewTweetForm from './NewTweetForm';
-import TweetList from './TweetList';
+import "../Homepage.css";
+import NewTweetForm from './NewTweetForm/NewTweetForm';
+import TweetList from './TweetList/TweetList';
 
 function FeedContainer() {
   return (

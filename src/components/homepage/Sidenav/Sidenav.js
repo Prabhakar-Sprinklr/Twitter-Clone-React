@@ -1,6 +1,6 @@
 import React from 'react';
-import SidebarNavOptions from './SidebarNavOptions';
-import '../styles/Homepage.css';
+import SidebarNavOptions from './SidebarNavOptions/SidebarNavOptions';
+import "../Homepage.css";
 import HomeIcon from '@mui/icons-material/Home';
 import ExploreIcon from '@mui/icons-material/Explore';
 import NotificationsIcon from '@mui/icons-material/Notifications';
@@ -12,7 +12,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { ListItem } from '@mui/material';
 
 function Sidenav() {
-    let optionList = [
+    const OPTION_LIST = [
         {
             text:"Home",
             Icon:HomeIcon,
@@ -57,8 +57,8 @@ function Sidenav() {
     return (
         <nav className='section-container sidebar-container'>
             <ul className="sidebar-option-list">
-                {optionList.map(function(item){
-                    return <SidebarNavOptions text={item.text} Icon={item.Icon} link={item.link} />
+                {OPTION_LIST.map(function(item){
+                    return <SidebarNavOptions key={item.text} text={item.text} Icon={item.Icon} link={item.link} />
                 })}
             </ul>
         </nav>
