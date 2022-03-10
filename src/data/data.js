@@ -9,10 +9,9 @@ let data = {
         if(this.initialization===true) return;
         this.initialization=true;
         console.log("Initialization Being Done");
-        if(localStorage.tweet_data === undefined){
+        if(localStorage.tweet_data === undefined || localStorage.user_data === undefined){
             this.tweet_collection=new Map();
             this.user_data=new Map();
-            console.log("Here");
             this.user_data.set("userhandle",{
                 userhandle:"userhandle",
                 username:"Username",
@@ -28,9 +27,9 @@ let data = {
                     followers:[],
                     following:[],
                 });
-                if(i%4==0)
+                if(i%4===0)
                     this.addFollower("userhandle","userhandle"+i);
-                if(i%3==0)
+                if(i%3===0)
                     this.addFollower("userhandle"+i,"userhandle");
             }
             for(let i=0;i<5;i++){
@@ -56,6 +55,28 @@ let data = {
         //Once the local storage is set up the above code doesnt run, and all reading is done from here.
         this.tweet_collection=new Map(JSON.parse(localStorage.tweet_data));
         this.user_data=new Map(JSON.parse(localStorage.user_data));
+    },
+
+    addFollower(user1,user2){
+        let user_entity1=this.user_data.get(user1);
+        let user_entity2=this.user_data.get(user2);
+        user_entity1.following.push(user2);
+        user_entity2.followers.push(user1);
+    },
+
+    getUserEntity(userid){
+        return this.user_data.get(userid);
+    },
+
+    saveUserDataToLocal(){
+        console.log("Called here");
+        localStorage.user_data = JSON.stringify(Array.from(this.user_data.entries()));
+    },
+
+    saveToLocal(){
+        console.log("Called");
+        localStorage.tweet_data = JSON.stringify(Array.from(this.tweet_collection.entries()));
+        this.saveUserDataToLocal();
     },
 
 }

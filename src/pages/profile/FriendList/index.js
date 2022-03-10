@@ -1,7 +1,7 @@
 import {getFollowers} from "../../../data/service/profileService";
-import SectionHeader from '../SectionHeader/SectionHeader';
+import SectionHeader from '../sectionHeader/SectionHeader';
 import FriendList from './FriendList'
-import FollowersView from './FollowersView/FollowersView';
+import FollowersView from './followersView/FollowersView';
 
 export {
     FriendList,

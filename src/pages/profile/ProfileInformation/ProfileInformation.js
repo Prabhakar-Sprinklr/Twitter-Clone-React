@@ -1,8 +1,10 @@
 import React from 'react'
 import './ProfileInformation.css';
-import ProfileDataViewer from './ProfileDataViewer/ProfileDataViewer';
-import ProfileImageViewer from './ProfileImageViewer/ProfileImageViewer';
-import SectionHeader from '../SectionHeader/SectionHeader';
+import {
+  ProfileDataViewer,
+  ProfileImageViewer,
+  SectionHeader,
+} from '.';
 
 function ProfileInformation() {
   return (

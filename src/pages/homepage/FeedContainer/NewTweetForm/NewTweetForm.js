@@ -1,7 +1,9 @@
 import React from 'react'
-import picture from '../../../../resources/batman-dp.jpeg';
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import AttachmentIcon from '@mui/icons-material/Attachment';
+import {
+    picture,
+    AddPhotoAlternateIcon,
+    AttachmentIcon,
+} from '.';
 import './NewTweetForm.css'
 
 function NewTweetForm() {
@@ -17,7 +19,7 @@ function NewTweetForm() {
             <img className="profile-dp" src={picture} alt="Error in loading !" />     
         </div>
         <form className="new-tweet-box" onSubmit={submitForm}>
-            <textarea className="new-tweet-input">Write Something !</textarea>
+            <textarea className="new-tweet-input" defaultValue="Write Something Good !"/>
             <input type="text" className="new-image-input hide-element"/>
             <div className='hide-element'>
                 <img className="preview-image" height="70px" width="70px" />

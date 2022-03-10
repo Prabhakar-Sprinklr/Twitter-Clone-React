@@ -1,9 +1,9 @@
 import React from 'react'
 import './FriendList.css'
 import {
+    FollowersView,
     SectionHeader,
 } from '.';
-import FollowersView from './FollowersView/FollowersView';
 
 function FriendList({grid,followers}) {
 

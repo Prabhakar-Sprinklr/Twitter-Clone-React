@@ -1,5 +1,5 @@
-import NewTweetForm from './NewTweetForm/NewTweetForm';
-import TweetListContainer from './TweetList/TweetListContainer';
+import NewTweetForm from './newTweetForm/NewTweetForm';
+import TweetListContainer from './tweetList/TweetListContainer';
 
 export {
     NewTweetForm,

@@ -1,7 +1,6 @@
 import data from '../data';
 import {getUserEntity,getUserEntityShort,doFollow} from "./userService";
 
-console.log("Calling data init from Profile Service");
 data.init();
 
 export const getFollowers = (userhandle)=>{
