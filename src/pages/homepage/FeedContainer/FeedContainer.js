@@ -9,7 +9,6 @@ import {
 function FeedContainer() {
   return (
     <div className='section-container feed-container'>
-        <h3>Feed Container</h3>
         <NewTweetForm/>
         <TweetListContainer/>
     </div>

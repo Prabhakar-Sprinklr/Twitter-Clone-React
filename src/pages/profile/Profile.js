@@ -22,7 +22,7 @@ function Profile() {
   return (
     <Fragment>
     <Header toggleButton={true} viewState={viewState} toggleFunction={toggleState} />
-    <div className="profile-home-container">
+    <div className="home-container profile-home-container">
       <ProfileInformation></ProfileInformation>
       <FriendListContainer grid={grid}></FriendListContainer>
     </div>

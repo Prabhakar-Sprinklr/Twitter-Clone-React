@@ -1,0 +1,79 @@
+.new-tweet-area {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin : 10px 5px 25px 5px;
+    border: 2px solid grey;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.new-tweet-box {
+    width: 85%;
+}
+
+.new-tweet-input{
+    height: 25px;
+    width: 100%;
+}
+
+.new-image-input {
+    height:20px;
+    width:100%;
+    margin-bottom: 5px;
+    display: none;
+}
+
+.new-tweet-button-panel {
+    text-align: left;
+}
+
+.profile-dp {
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    margin: 5px;
+}
+
+.hide-element {
+    display: none;
+}
+
+.upload-image-button{
+    display: inline-block;
+    background-color: lightgrey;
+    margin: 0em;
+    padding: 1px 6px;
+    border: 2px outset rgb(82, 82, 82);
+}
+
+.upload-image-button:hover{
+    background-color: rgb(156, 156, 156);
+    border-color: black;
+}
+
+.tweet-box-button {
+    background-color: lightgrey;
+    border-color: rgb(82, 82, 82);
+}
+
+.tweet-box-button:hover{
+    background-color: rgb(156, 156, 156);
+    border-color: black;
+}
+
+#tweet-box-tweet-button {
+    height: 30px;
+    width: 80px;
+    background-color: #1DA1F2;
+    float: right;
+    border-radius: 20px;
+}
+
+#tweet-box-tweet-button:hover{
+    background-color: lightcoral;
+}
+
+input[type="file"] {
+    display: none;
+}

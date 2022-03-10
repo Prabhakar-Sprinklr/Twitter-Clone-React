@@ -51,3 +51,19 @@
 .sidebar-option-list {
     list-style-type: none;
 }
+
+@media (max-width: 940px) { 
+    body {
+        justify-content: space-around;
+    }
+
+    .home-container{
+        margin: 0 auto;
+        max-width: 600px;
+        flex-direction: column !important;
+    }
+
+    .sidebar-container {
+        order: 2;
+    }
+}

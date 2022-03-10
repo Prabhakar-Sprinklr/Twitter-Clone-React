@@ -52,3 +52,11 @@
 .follow-button:hover{
     cursor: pointer;
 }
+
+.list-grid-view {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-left: 0px;
+    padding-right: 10px;
+}
