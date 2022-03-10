@@ -5,8 +5,9 @@ import profilePic from '../../../../resources/batman2.jpeg';
 /*
 Should get the user details to render the data
 */
-function ListViewUserEntity() {
-  return (
+const ListViewUserEntity = ({user})=>{
+    const buttonTask = (user.following)?"Unfollow":"Follow";
+    return (
     <li>
         <article className="friend-entity">
             <div className="profile-pic-container">
@@ -14,16 +15,16 @@ function ListViewUserEntity() {
             </div>
             <div className="friend-details-container">
                 <address className="username">
-                    BATMAN CLONE
+                    {user.username}
                 </address>
-                <address className="userid">@BatID</address>
+                <address className="userid">@{user.userhandle}</address>
             </div>
             <div className="friend-follow-button-container">
-                <button type="button" className="follow-button"> Follow </button>
+                <button type="button" className="follow-button" data-task={buttonTask} data-userhandle={user.userhandle}> {buttonTask} </button>
             </div>
         </article>
     </li>
-  )
-}
+    )
+};
 
-export default ListViewUserEntity
+export default ListViewUserEntity;

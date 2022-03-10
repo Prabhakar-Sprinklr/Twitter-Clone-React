@@ -1,23 +1,23 @@
 import React, { Fragment, useState } from 'react';
-import FriendListContainer from '../components/profile/FriendListContainer/FriendListContainer';
-import Header from '../components/common/Header/Header';
-import ProfileInformation from '../components/profile/ProfileInformation/ProfileInformation';
-import "../components/profile/Profile.css";
+import { 
+  FriendListContainer,
+  Header,
+  ProfileInformation,
+} from '.';
+import "./Profile.css";
 
 function Profile() {
 
   const [viewState,setViewState] = useState("grid");
 
-  //Should be an arrow function
-  //--------------------------------------------------------------------------------------------------------------------------------
-  function toggleState(){
+  const toggleState = ()=>{
     if(viewState==="grid")
       setViewState("list");
     else
       setViewState("grid");
   };
 
-  let grid = (viewState==="grid");
+  const grid = (viewState==="grid");
 
   return (
     <Fragment>

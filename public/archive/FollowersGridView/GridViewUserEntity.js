@@ -3,11 +3,9 @@ import "../styles/FollowersEntityCommon.css";
 import "./FollowersEntityGridView.css";
 import profilePic from '../../../../resources/batman2.jpeg';
 
-/*
-Should get the user details to render the data
-*/
-function GridViewUserEntity() {
-  return (
+function GridViewUserEntity({user}) {
+    const buttonTask = (user.following)?"Unfollow":"Follow";
+    return (
     <li className="list-item-grid-view">
         <article className="friend-entity-grid-view">
             <div className="profile-pic-container">
@@ -15,16 +13,16 @@ function GridViewUserEntity() {
             </div>
             <div className="friend-details-container friend-details-container-grid-view">
                 <address className="username username-grid-view">
-                    BATMAN CLONE
+                    {user.username}
                 </address>
-                <address className="userid userid-grid-view">@BatID</address>
+                <address className="userid userid-grid-view">@{user.userhandle}</address>
             </div>
             <div className="friend-follow-button-container">
-                <button type="button" className="follow-button"> Follow </button>
+                <button type="button" className="follow-button" data-task={buttonTask} data-userhandle={user.userhandle}> {buttonTask} </button>
             </div>
         </article>
     </li>
-  )
+    )
 }
 
 export default GridViewUserEntity
