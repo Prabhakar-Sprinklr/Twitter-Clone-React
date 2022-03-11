@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import FriendListContainer from './components/friendList';
 import Header from '../../components/header';
 import ProfileInformation from './components/profileInformation';
-import "./Profile.css";
+import "./profile.css";
 
 function Profile() {
 

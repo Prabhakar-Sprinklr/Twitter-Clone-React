@@ -1,5 +1,5 @@
 import React from 'react';
-import './SidebarNavOptions.css';
+import './sidebarNavOptions.css';
 
 function SidebarNavOptions({link , Icon, text}) {
   return (

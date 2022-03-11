@@ -1,5 +1,5 @@
 import React from 'react';
-import './SectionHeader.css';
+import './sectionHeader.css';
 
 function SectionHeader({text}) {
   return (

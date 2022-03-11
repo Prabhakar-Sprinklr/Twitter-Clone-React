@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Homepage.css';
+import '../../homepage.css';
 
 import NewTweetForm from './components/newTweetForm';
 import TweetListContainer from './components/tweetList';

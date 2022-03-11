@@ -1,5 +1,5 @@
 import React from 'react'
-import './ProfileInformation.css';
+import './profileInformation.css';
 import ProfileDataViewer from './components/profileDataViewer';
 import ProfileImageViewer from './components/profileImageViewer';
 import SectionHeader from '../sectionHeader/SectionHeader';
@@ -7,10 +7,10 @@ import SectionHeader from '../sectionHeader/SectionHeader';
 function ProfileInformation() {
   return (
     <section className="user-profile-information">
-        <SectionHeader text="PROFILE INFORMATION"></SectionHeader>
+        <SectionHeader text="PROFILE INFORMATION" />
         <section className="profile-information-container">
-            <ProfileImageViewer></ProfileImageViewer>
-            <ProfileDataViewer></ProfileDataViewer>
+            <ProfileImageViewer />
+            <ProfileDataViewer />
         </section>
     </section>
   )

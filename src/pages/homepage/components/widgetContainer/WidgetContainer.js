@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import '../../Homepage.css';
-import './WidgetContainer.css'
+import '../../homepage.css';
+import './widgetContainer.css'
 
 function WidgetContainer() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import './FriendList.css'
+import './friendList.css'
 import SectionHeader from "../sectionHeader";
 import FollowersView from './components/followersView';
 

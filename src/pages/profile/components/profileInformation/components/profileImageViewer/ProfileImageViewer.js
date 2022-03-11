@@ -1,6 +1,6 @@
 import React from 'react'
 import profilePic from '../../../../../../resources/batman2.jpeg'
-import './ProfileImageViewer.css'
+import './profileImageViewer.css'
 
 
 function ProfileImageViewer() {

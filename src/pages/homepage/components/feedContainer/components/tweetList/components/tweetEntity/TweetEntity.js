@@ -1,5 +1,5 @@
 import React from 'react';
-import './TweetEntity.css';
+import './tweetEntity.css';
 import picture from '../../../../../../../../resources/batman-dp.jpeg';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ShareIcon from '@mui/icons-material/Share';

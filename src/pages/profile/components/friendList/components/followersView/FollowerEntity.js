@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import "../../styles/FollowersEntityCommon.css";
-import "./FollowerEntity.css";
+import "../../styles/followersEntityCommon.css";
+import "./followerEntity.css";
 import profilePic from "../../../../../../resources/batman2.jpeg";
 import {takeAction} from "../../../../../../data/service/profileService";
 
