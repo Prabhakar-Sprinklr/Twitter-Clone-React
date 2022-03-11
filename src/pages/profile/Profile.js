@@ -17,14 +17,14 @@ function Profile() {
       setViewState("grid");
   };
 
-  const grid = (viewState==="grid");
+  const isGrid = (viewState==="grid");
 
   return (
     <Fragment>
     <Header toggleButton={true} viewState={viewState} toggleFunction={toggleState} />
     <div className="home-container profile-home-container">
-      <ProfileInformation></ProfileInformation>
-      <FriendListContainer grid={grid}></FriendListContainer>
+      <ProfileInformation/>
+      <FriendListContainer grid={isGrid}/>
     </div>
     </Fragment>
   );

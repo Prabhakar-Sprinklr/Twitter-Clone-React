@@ -4,14 +4,8 @@ import "../styles/FollowersEntityCommon.css";
 
 function FollowersView({followers,grid}) {
 
-    const handleClick = (event)=>{
-        console.log(event);
-        console.log(event.target);
-        console.log(event.currentTraget);
-    }
     return (
-    // <ul className="sidebar-option-list" onClick={handleClick}>
-    <ul className={`sidebar-option-list ${grid?'list-grid-view':''}`} onClick={handleClick}>
+    <ul className={`sidebar-option-list ${grid?'list-grid-view':''}`}>
         {followers.map(function(follower){
             return <FollowerEntity key={follower.userhandle} user={follower} grid={grid}/>
         })}

@@ -64,12 +64,22 @@ let data = {
         user_entity2.followers.push(user1);
     },
 
+    removeFollower(user1,user2){
+        let user_entity1=this.user_data.get(user1);
+        let user_entity2=this.user_data.get(user2);
+        user_entity1.following = user_entity1.following.filter(function(userid){
+            return userid!==user2;
+        });
+        user_entity2.followers = user_entity2.followers.filter(function(userid){
+            return userid!==user1;
+        })
+    },
+
     getUserEntity(userid){
         return this.user_data.get(userid);
     },
 
     saveUserDataToLocal(){
-        console.log("Called here");
         localStorage.user_data = JSON.stringify(Array.from(this.user_data.entries()));
     },
 

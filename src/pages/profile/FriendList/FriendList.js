@@ -9,7 +9,7 @@ function FriendList({grid,followers}) {
 
     return (
         <section className="friend-list-container">
-            <SectionHeader text="FOLLOWERS LIST"></SectionHeader>
+            <SectionHeader text="FOLLOWERS LIST" />
             <main className='friend-list'>
                 <FollowersView followers={followers} grid={grid}/>
             </main>
