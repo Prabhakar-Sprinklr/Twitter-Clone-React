@@ -15,11 +15,13 @@ export const getFollowers = (userhandle)=>{
 }
 
 export const takeAction = ({user1,user2,task})=>{
-    if(task==="Follow")
-        data.addFollower(user1,user2);
-    else if(task==="Unfollow")
-        data.removeFollower(user1,user2);
-    else return;
+    switch(task){
+        case "Follow" : data.addFollower(user1,user2);
+                        break;
+        case "Unfollow" : data.removeFollower(user1,user2);
+                            break;
+        default : return;
+    }
     data.saveUserDataToLocal();
 }
 

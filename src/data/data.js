@@ -57,26 +57,27 @@ let data = {
         this.user_data=new Map(JSON.parse(localStorage.user_data));
     },
 
+    getUserEntity(userid){
+        return this.user_data.get(userid);
+    },
+
+
     addFollower(user1,user2){
-        let user_entity1=this.user_data.get(user1);
-        let user_entity2=this.user_data.get(user2);
+        let user_entity1=this.getUserEntity(user1);
+        let user_entity2=this.getUserEntity(user2);
         user_entity1.following.push(user2);
         user_entity2.followers.push(user1);
     },
 
     removeFollower(user1,user2){
-        let user_entity1=this.user_data.get(user1);
-        let user_entity2=this.user_data.get(user2);
+        let user_entity1=this.getUserEntity(user1);
+        let user_entity2=this.getUserEntity(user2);
         user_entity1.following = user_entity1.following.filter(function(userid){
             return userid!==user2;
         });
         user_entity2.followers = user_entity2.followers.filter(function(userid){
             return userid!==user1;
         })
-    },
-
-    getUserEntity(userid){
-        return this.user_data.get(userid);
     },
 
     saveUserDataToLocal(){

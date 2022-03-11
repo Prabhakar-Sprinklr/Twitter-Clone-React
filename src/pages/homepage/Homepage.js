@@ -1,10 +1,8 @@
 import React, { Fragment } from 'react';
-import { 
-  FeedContainer,
-  Sidenav,
-  WidgetContainer,
-  Header
-} from '.';
+import FeedContainer from "./components/feedContainer";
+import Header from '../../components/header';
+import Sidenav from './components/sidenav';
+import WidgetContainer from './components/widgetContainer';
 import './Homepage.css';
 
 function Homepage() {

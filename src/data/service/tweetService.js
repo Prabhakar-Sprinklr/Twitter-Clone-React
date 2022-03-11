@@ -28,3 +28,32 @@ export const getAllTweet = ()=>{
     data.tweet_collection_list.sort(function(a, b) {return b.timestamp - a.timestamp;});
     return data.tweet_collection_list;
 }
+
+const addTweet = ({userhandle,tweet_text}) => {
+    let user = data.getUserEntity(userhandle);
+    if(user===undefined) return;
+    let timestamp = Date.now();
+    let unique_id=userhandle+"-"+timestamp;
+    data.addTweet({
+            unique_id:unique_id,
+            content:{
+                userhandle:userhandle,
+                text:tweet_text,
+                timestamp:timestamp,
+            },
+        });
+}
+
+export const addNewTweet = ({userhandle,tweet_text})=>{
+    let tweet_length = tweet_text.length;
+    if(tweet_length<=5){
+        alert("Tweet Text too short !");
+        return false;
+    }
+    else if(tweet_length>100){
+        alert("Too large a tweet !");
+        return false;
+    }
+    addTweet({userhandle,tweet_text});
+    return true;
+}

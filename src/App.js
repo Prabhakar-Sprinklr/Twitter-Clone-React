@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Profile from './pages/profile/Profile';
+import Profile from './pages/profile';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Homepage from './pages/homepage/Homepage';
+import Homepage from './pages/homepage';
 
 function App() {
   return (
