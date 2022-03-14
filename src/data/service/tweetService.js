@@ -4,6 +4,7 @@ import {getUserEntity} from "./userService";
 data.init();
 
 export const getAllTweet = ()=>{
+    console.log("Tweet Retieved from DB !");
     if(data.tweet_collection_list!==undefined) return data.tweet_collection_list;
     data.tweet_collection_list=[];
     for(let [key,value] of data.tweet_collection.entries()){
@@ -30,30 +31,42 @@ export const getAllTweet = ()=>{
 }
 
 const addTweet = ({userhandle,tweet_text}) => {
-    let user = data.getUserEntity(userhandle);
-    if(user===undefined) return;
     let timestamp = Date.now();
-    let unique_id=userhandle+"-"+timestamp;
-    data.addTweet({
+    let unique_id=userhandle+"-"+timestamp+"-0";
+    const response = data.addTweet({
             unique_id:unique_id,
             content:{
                 userhandle:userhandle,
                 text:tweet_text,
                 timestamp:timestamp,
+                image:undefined,
             },
         });
+    return response;
 }
 
 export const addNewTweet = ({userhandle,tweet_text})=>{
     let tweet_length = tweet_text.length;
     if(tweet_length<=5){
         alert("Tweet Text too short !");
-        return false;
+        return {response:false};
     }
     else if(tweet_length>100){
         alert("Too large a tweet !");
-        return false;
+        return {response:false};
     }
-    addTweet({userhandle,tweet_text});
-    return true;
+    const tweet_response = addTweet({userhandle,tweet_text});
+    return {response:true, tweet_entity : tweet_response};
+}
+
+export const deleteTweet = (id)=>{
+    if (window.confirm("Do you want to delete the tweet ?") === true){
+        data.deleteTweet(id);
+        return true;
+    }
+    return false;
+}
+
+export const editTweet = (id,tweet_text)=>{
+    data.editTweet({id,tweet_text});
 }

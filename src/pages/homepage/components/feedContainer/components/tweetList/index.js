@@ -1,1 +1,1 @@
-export {default} from "./TweetListContainer.js";
+export {default} from "./TweetList.js";

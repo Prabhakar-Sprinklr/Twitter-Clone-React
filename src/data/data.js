@@ -61,6 +61,44 @@ let data = {
         return this.user_data.get(userid);
     },
 
+    addTweet({unique_id,content}){
+        this.tweet_collection.set(unique_id,content);
+        let user_entity=this.getUserEntity(content.userhandle);
+        const new_tweet_entity = {
+            id:unique_id,
+            username:user_entity.username,
+            userid:content.userhandle,
+            profilepic:user_entity.profilepic,
+            text:content.text,
+            image:content.image,
+            timestamp:content.timestamp,
+        };
+        this.tweet_collection_list.unshift(new_tweet_entity);
+        this.saveToLocal();
+        return new_tweet_entity;
+    },
+
+    deleteTweet(id){
+        this.tweet_collection.delete(id);
+        this.tweet_collection_list=this.tweet_collection_list.filter(function(tweet_item){
+            return tweet_item.id!==id;
+        });
+        this.saveToLocal();
+        console.log("Deletion Successful!")
+    },
+
+    editTweet({id,tweet_text}){
+        let tweet = this.tweet_collection.get(id);
+        tweet.text=tweet_text;
+        let temp_tweet;
+        for(temp_tweet of this.tweet_collection_list){
+            if(temp_tweet.id===id)
+                break;
+        }
+        temp_tweet.text=tweet_text;
+        this.saveToLocal();
+    },
+
 
     addFollower(user1,user2){
         let user_entity1=this.getUserEntity(user1);
@@ -85,7 +123,6 @@ let data = {
     },
 
     saveToLocal(){
-        console.log("Called");
         localStorage.tweet_data = JSON.stringify(Array.from(this.tweet_collection.entries()));
         this.saveUserDataToLocal();
     },

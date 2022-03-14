@@ -1,22 +1,39 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import picture from "../../../../../../resources/batman-dp.jpeg";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import AttachmentIcon from '@mui/icons-material/Attachment';
+import { addNewTweet } from '../../../../../../data/service/tweetService';
 import './NewTweetForm.css'
 
 const userhandle = "userhandle";
+const INIT_TWEET_TEXT = "Write Something Good !";
 
-function NewTweetForm() {
+function NewTweetForm(props) {
+    // console.log("Now - ",props.editTweetData?.tweetText);
+    const initial_text = props.editTweetData?.tweetText??INIT_TWEET_TEXT;
+    const [tweet_text,setTweetText] = useState(initial_text);
+
+    useEffect(()=>{
+        setTweetText(props.editTweetData?.tweetText??INIT_TWEET_TEXT)
+    },[props])
 
   const submitForm = (event)=>{
     event.preventDefault();
-    const tweetText = event.target.elements.tweetText.value;
-    // if(addNewTweet({userhandle,tweetText})===false){
-    //     console.log("Error in Tweet Submission !");
-    //     return;
-    // }
-    console.log("New Tweet Submitted !");
+    if(props.editTweetData===undefined){
+        const response_entity = addNewTweet({userhandle,tweet_text});
+        if(response_entity.response===true){
+            props.newTweetHandler(response_entity.tweet_entity);
+            setTweetText(INIT_TWEET_TEXT);
+        }   
+    }
+    else{
+        props.editTweetHandler(props.editTweetData.tweetId,tweet_text);
+    }
   };
+
+  const updateTweetText = (event)=>{
+    setTweetText(event.target.value);
+  }
 
   return (
     <section className="new-tweet-area">
@@ -24,7 +41,7 @@ function NewTweetForm() {
             <img className="profile-dp" src={picture} alt="Error in loading !" />     
         </div>
         <form className="new-tweet-box" onSubmit={submitForm}>
-            <textarea name="tweetText" className="new-tweet-input" defaultValue="Write Something Good !"/>
+            <textarea name="tweetText" className="new-tweet-input" value={tweet_text} onChange={updateTweetText} />
             <input type="text" className="new-image-input hide-element"/>
             <div className='hide-element'>
                 <img className="preview-image" height="70px" width="70px" />

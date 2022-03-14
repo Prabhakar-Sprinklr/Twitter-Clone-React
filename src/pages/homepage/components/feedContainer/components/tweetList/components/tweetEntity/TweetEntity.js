@@ -6,7 +6,16 @@ import ShareIcon from '@mui/icons-material/Share';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-function TweetEntity({tweet}) {
+function TweetEntity({tweet,handleTweetDelete,handleTweetEdit}) {
+
+    const handleDelete = ()=>{
+        handleTweetDelete(tweet.id);
+    }
+
+    const handleEdit = ()=>{
+        handleTweetEdit(tweet.id, tweet.text);
+    }
+
   return (
     <article className='tweet'>
         <div>
@@ -24,8 +33,9 @@ function TweetEntity({tweet}) {
             <aside className="tweet-option-button-container">
                 <button className="tweet-option-button"><ThumbUpIcon /></button>
                 <button className="tweet-option-button"><ShareIcon /></button>
-                <button className="tweet-option-button" data-task="edit" data-tweetid={tweet.id}><EditIcon data-task="edit" data-tweetid={tweet.id}/></button>
-                <button className="tweet-option-button" data-task="delete" data-tweetid={tweet.id}><DeleteForeverIcon data-task="delete" data-tweetid={tweet.id}/></button>
+                <button className="tweet-option-button" onClick={handleEdit} ><EditIcon data-task="edit" data-tweetid={tweet.id}/></button>
+                {/* <button className="tweet-option-button" data-task="delete" data-tweetid={tweet.id}><DeleteForeverIcon data-task="delete" data-tweetid={tweet.id}/></button> */}
+                <button className="tweet-option-button" onClick={handleDelete}><DeleteForeverIcon data-task="delete" data-tweetid={tweet.id}/></button>
 
             </aside>
         </div>
