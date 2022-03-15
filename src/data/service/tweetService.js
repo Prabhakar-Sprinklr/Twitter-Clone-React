@@ -30,7 +30,7 @@ export const getAllTweet = ()=>{
     return data.tweet_collection_list;
 }
 
-const addTweet = ({userhandle,tweet_text}) => {
+const addTweet = ({userhandle,tweet_text,imageName}) => {
     let timestamp = Date.now();
     let unique_id=userhandle+"-"+timestamp+"-0";
     const response = data.addTweet({
@@ -39,13 +39,13 @@ const addTweet = ({userhandle,tweet_text}) => {
                 userhandle:userhandle,
                 text:tweet_text,
                 timestamp:timestamp,
-                image:undefined,
+                image:imageName,
             },
         });
     return response;
 }
 
-export const addNewTweet = ({userhandle,tweet_text})=>{
+export const addNewTweet = ({userhandle,tweet_text,imageName})=>{
     let tweet_length = tweet_text.length;
     if(tweet_length<=5){
         alert("Tweet Text too short !");
@@ -55,7 +55,7 @@ export const addNewTweet = ({userhandle,tweet_text})=>{
         alert("Too large a tweet !");
         return {response:false};
     }
-    const tweet_response = addTweet({userhandle,tweet_text});
+    const tweet_response = addTweet({userhandle,tweet_text,imageName});
     return {response:true, tweet_entity : tweet_response};
 }
 
@@ -67,6 +67,6 @@ export const deleteTweet = (id)=>{
     return false;
 }
 
-export const editTweet = (id,tweet_text)=>{
-    data.editTweet({id,tweet_text});
+export const editTweet = (id,tweet_text,imageName)=>{
+    data.editTweet({id,tweet_text,imageName});
 }

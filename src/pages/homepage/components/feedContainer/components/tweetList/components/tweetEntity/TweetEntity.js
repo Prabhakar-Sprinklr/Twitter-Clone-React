@@ -4,6 +4,7 @@ import picture from '../../../../../../../../resources/batman-dp.jpeg';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ShareIcon from '@mui/icons-material/Share';
 import EditIcon from '@mui/icons-material/Edit';
+import { getPic } from '../../../../../../../../data/constants';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 function TweetEntity({tweet,handleTweetDelete,handleTweetEdit}) {
@@ -13,7 +14,7 @@ function TweetEntity({tweet,handleTweetDelete,handleTweetEdit}) {
     }
 
     const handleEdit = ()=>{
-        handleTweetEdit(tweet.id, tweet.text);
+        handleTweetEdit(tweet.id, tweet.text, tweet.image);
     }
 
   return (
@@ -27,7 +28,7 @@ function TweetEntity({tweet,handleTweetDelete,handleTweetEdit}) {
                 <div className='tweet-text-container'>{tweet.text}</div>
             </div>
             <div>
-                <img className="tweet-image" src={picture} alt="Error in Loading !" />
+                <img className="tweet-image" src={getPic(tweet.image)} alt="Error in Loading !" />
             </div>
 
             <aside className="tweet-option-button-container">

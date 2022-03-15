@@ -87,7 +87,7 @@ let data = {
         console.log("Deletion Successful!")
     },
 
-    editTweet({id,tweet_text}){
+    editTweet({id,tweet_text,imageName}){
         let tweet = this.tweet_collection.get(id);
         tweet.text=tweet_text;
         let temp_tweet;
@@ -96,6 +96,7 @@ let data = {
                 break;
         }
         temp_tweet.text=tweet_text;
+        temp_tweet.image=imageName;
         this.saveToLocal();
     },
 

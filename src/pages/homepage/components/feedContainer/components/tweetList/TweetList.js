@@ -3,6 +3,7 @@ import './tweetList.css'
 
 
 function TweetList({tweetList,handleTweetDelete,handleTweetEdit}) {
+  console.log("+++++++++",tweetList);
   return (
     <div>
         <ul className='tweetlist'>
