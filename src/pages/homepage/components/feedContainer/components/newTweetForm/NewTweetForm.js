@@ -1,41 +1,43 @@
-import React, {useEffect, useState} from 'react'
+import React, {memo, useEffect, useState} from 'react'
 import picture from "../../../../../../resources/batman-dp.jpeg";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
-import { addNewTweet } from '../../../../../../data/service/tweetService';
 import { getPic } from '../../../../../../data/constants';
 import './NewTweetForm.css'
 
 const userhandle = "userhandle";
 const INIT_TWEET_TEXT = "Write Something Good !";
 
-function NewTweetForm(props) {
-    // console.log("Now - ",props.editTweetData?.tweetText);
-    const initial_text = props.editTweetData?.tweetText??INIT_TWEET_TEXT;
-    const [tweet_text,setTweetText] = useState(initial_text);
+function NewTweetForm({newTweetHandler,editTweetHandler,editTweetData}) {
+    //---------------------------------------------------------------------------------------------------------
+    //Remove useEffect at line 19
+
+    const [tweet_text,setTweetText] = useState(INIT_TWEET_TEXT);
     const [imageName,setImageName] = useState("");
 
     useEffect(()=>{
-        setTweetText(props.editTweetData?.tweetText??INIT_TWEET_TEXT);
-        if(props.editTweetData)
-            setImageName(props.editTweetData.imageName);
-    },[props])
+        setTweetText(editTweetData?.tweetText??INIT_TWEET_TEXT);
+        if(editTweetData)
+            setImageName(editTweetData?.imageName??"");
+    },[editTweetData])
 
 
   const submitForm = (event)=>{
     event.preventDefault();
-    if(props.editTweetData===undefined){
-        const response_entity = addNewTweet({userhandle,tweet_text,imageName});
-        if(response_entity.response===true){
-            props.newTweetHandler(response_entity.tweet_entity);
-            setTweetText(INIT_TWEET_TEXT);
-            setImageName("");
-        }   
-    }
+    if(editTweetData===undefined){
+        if(tweet_text.length<5 || tweet_text.length>100){
+            alert("Tweet Text should be between 5 to 100 characters!");
+            return;
+        }
+        newTweetHandler({userhandle,tweet_text,imageName});
+        setTweetText(INIT_TWEET_TEXT);
+        setImageName("");
+    }   
     else{
-        console.log(imageName);
-        props.editTweetHandler(props.editTweetData.tweetId,tweet_text,imageName);
+        editTweetHandler(editTweetData.tweetId,tweet_text,imageName);
+        setTweetText(INIT_TWEET_TEXT);
+        setImageName("");
     }
   };
 
@@ -80,4 +82,4 @@ function NewTweetForm(props) {
   )
 }
 
-export default NewTweetForm
+export default memo(NewTweetForm);

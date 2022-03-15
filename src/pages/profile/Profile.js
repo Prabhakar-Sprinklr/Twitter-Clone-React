@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useCallback, useState } from 'react';
 import FriendListContainer from './components/friendList';
 import Header from '../../components/header';
 import ProfileInformation from './components/profileInformation';

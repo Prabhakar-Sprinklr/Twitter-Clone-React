@@ -6,32 +6,41 @@ export const prefillLocalStorage = ()=>{
         username:"Username",
         profilepic:"batman-dp.jpeg",
         followers:['userhandle0',
-        'userhandle0',
+        'userhandle1',
         'userhandle2',
-        'userhandle4',
-        'userhandle6',
-        'userhandle8',
-        'userhandle10',
-        'userhandle13',
-        'userhandle19',
-        'userhandle22'],
+        ],
         following:['userhandle0',
-        'userhandle4',
-        'userhandle8',
-        'userhandle11'],
+        'userhandle2',
+        ],
     });
-    for(let i=0;i<30;i++){
-        userListLocal.push({
-            userhandle:"userhandle"+i,
-            username:"Username"+i,
-            profilepic:"batman-dp.jpeg",
-            followers:[],
-            following:[],
-        });
-    }
+
+    userListLocal.push({
+        userhandle:"userhandle0",
+        username:"Username",
+        profilepic:"batman-dp.jpeg",
+        followers:['userhandle'],
+        following:['userhandle'],
+    });
+
+    userListLocal.push({
+        userhandle:"userhandle1",
+        username:"Username",
+        profilepic:"batman-dp.jpeg",
+        followers:[],
+        following:['userhandle'],
+    });
+
+    userListLocal.push({
+        userhandle:"userhandle2",
+        username:"Username",
+        profilepic:"batman-dp.jpeg",
+        followers:['userhandle'],
+        following:['userhandle'],
+    });
+
     for(let i=0;i<5;i++){
         let tweet_text="Updated Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
-            tweet_image="./resources/batman-dp.jpeg",
+            tweet_image="batman-dp.jpeg",
             userhandle = "userhandle",
             timestamp=Date.now(),
             id=userhandle+"-"+timestamp+"-"+i;

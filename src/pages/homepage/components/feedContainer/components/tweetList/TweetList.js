@@ -1,9 +1,9 @@
+import { memo } from 'react';
 import TweetEntity from './components/tweetEntity';
 import './tweetList.css'
 
 
 function TweetList({tweetList,handleTweetDelete,handleTweetEdit}) {
-  console.log("+++++++++",tweetList);
   return (
     <div>
         <ul className='tweetlist'>
@@ -19,4 +19,4 @@ function TweetList({tweetList,handleTweetDelete,handleTweetEdit}) {
   )
 }
 
-export default TweetList
+export default memo(TweetList);

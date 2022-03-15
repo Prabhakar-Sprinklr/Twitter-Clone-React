@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "../../styles/followersEntityCommon.css";
 import "./followerEntity.css";
 import profilePic from "../../../../../../resources/batman2.jpeg";
-import {takeAction} from "../../../../../../data/service/profileService";
 
-const user1 = "userhandle";
 
-const FollowerEntity = ({user,grid})=>{
 
-    const [isFollowing,setFollowing] = useState(user.following);
+const FollowerEntity = ({user,isFollowing,grid,toggleFollowing})=>{
 
     const buttonTask = isFollowing?"Unfollow":"Follow";
-    
-    const addFollower = (event)=>{
-        const task = event.target.dataset.task;
-        const user2 = event.target.dataset.userhandle;
-        takeAction({user1,user2,task});
-        setFollowing(!isFollowing);
+
+    const toggleFollowingHandler = ()=>{
+        toggleFollowing(user.userhandle,isFollowing);
     }
 
     return (
@@ -32,7 +26,7 @@ const FollowerEntity = ({user,grid})=>{
                 <address className={`userid ${grid?'userid-grid-view':''}`}>@{user.userhandle}</address>
             </div>
             <div className="friend-follow-button-container">
-                <button type="button" className="follow-button" data-task={buttonTask} data-userhandle={user.userhandle} onClick={addFollower}> {buttonTask} </button>
+                <button type="button" className="follow-button" onClick={toggleFollowingHandler}> {buttonTask} </button>
             </div>
         </article>
     </li>
