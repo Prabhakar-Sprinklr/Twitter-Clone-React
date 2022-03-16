@@ -1,4 +1,4 @@
-// import React,{ useRef, useState, useEffect } from 'react';
+// import React,{ useRef, useState, useEffect, useMemo, useCallback } from 'react';
 // import '../../homepage.css';
 // import NewTweetForm from './components/newTweetForm';
 // import TweetList from './components/tweetList';
@@ -19,6 +19,7 @@
 
 //   const divElementRef = useRef();
 
+//   //not needed to have this function 
 //   const getAllTweets = ()=>{
 //     return JSON.parse(localStorage.tweetListLocal);
 //   }
@@ -33,32 +34,41 @@
 //       if(user.userhandle === userhandle)
 //         return user;
 //     }
-//   }
+//   };
 
-
-
-//   for(let tweet of tweetList){
-//     let userhandle = tweet.userhandle;
-//     const user_entity = getUserEntity(userhandle);
-//     const content = {
-//       id:tweet.id,
-//       username:user_entity.username,
-//       userid:userhandle,
-//       profilepic:user_entity.profilepic,
-//       text:tweet.text,
-//       image:tweet.image,
-//       timestamp:tweet.timestamp,
+//   const prepareTweets = useCallback(()=>{
+//     console.log("Prepare tweet called!");
+//     let tempTweetList = [];
+//     //Use map
+//     //------------------------------------------------
+//     for(let tweet of tweetList){
+//       let userhandle = tweet.userhandle;
+//       const user_entity = getUserEntity(userhandle);
+//       const content = {
+//         id:tweet.id,
+//         username:user_entity.username,
+//         userid:userhandle,
+//         profilepic:user_entity.profilepic,
+//         text:tweet.text,
+//         image:tweet.image,
+//         timestamp:tweet.timestamp,
+//       }
+//       tempTweetList.push(content);
 //     }
-//     tweetEntityList.push(content);
-//   }
-//   tweetEntityList.sort((a,b)=>(b.timestamp-a.timestamp));
+//     tempTweetList.sort((a,b)=>(b.timestamp-a.timestamp));
+//     return tempTweetList;
+//   },[tweetList]);
+  
+//   tweetEntityList=useMemo(()=>prepareTweets(),[prepareTweets]);
 
-//   const addTweet = ({userhandle,tweet_text,imageName})=>{
+//   const addTweet = useCallback(({userhandle,tweet_text,imageName})=>{
 //     const timestamp = Date.now();
 //     if(imageName==="") imageName="batman-dp.jpeg";
 //     const id=userhandle+"-"+timestamp+"-0";
 //     const content = {
 //       id:id,
+//       //wapis likhne ki zaroorat nhi
+//       //---------------------------------------------
 //       userhandle:userhandle,
 //       text:tweet_text,
 //       image:imageName,
@@ -66,9 +76,12 @@
 //     };
 //     const tempTweetList = [content, ...tweetList];
 //     setTweetList(tempTweetList);
-//   }
+//   },[tweetList]);
+//   //setTweetList(prevList=>[content,..prevList])
+//   //s
+//   //...........................................
 
-//   const editTweet = (id,text,image)=>{
+//   const editTweet = useCallback((id,text,image)=>{
 //     let tweet;
 //     let tempTweetList = [...tweetList];
 //     for(tweet of tempTweetList){
@@ -79,23 +92,25 @@
 //     tweet.image=image;
 //     setTweetList(tempTweetList);
 //     setEditTweetData(undefined);
-//   }
+//   },[tweetList]);
 
-//   const deleteTweet = (tweetId)=>{
+//   const deleteTweet = useCallback((tweetId)=>{
+//     //Arrow here
+//     //--------------------------------------------------
 //     const tempTweetList = tweetList.filter(function(tweet){
 //       return tweet.id!==tweetId;
 //     });
 //     setTweetList(tempTweetList);
-//   }
+//   },[tweetList]);
 
-//   const editTweetHandler = (tweetId,text,image)=>{
+//   const editTweetHandler = useCallback((tweetId,text,image)=>{
 //     setEditTweetData({
 //       tweetId: tweetId,
 //       tweetText: text,
 //       imageName: image,
 //     });
 //     divElementRef.current.scrollTo(0, 0);
-//   }
+//   },[]);
 
 //   useEffect(()=>{
 //     localStorage.tweetListLocal = JSON.stringify(tweetList);
@@ -103,6 +118,7 @@
 
 //   // useEffect(()=>{
 //   //   return ()=>{
+//   //     console.log("Unmounting!",tweetList);
 //   //     localStorage.tweetListLocal = JSON.stringify(tweetList);
 //   //   }
 //   // },[]);
@@ -119,6 +135,8 @@
 // export default FeedContainer
 
 import React,{ useRef, useState, useEffect, useMemo, useCallback } from 'react';
+import useTweetData from '../../../../hooks/useTweetData';
+import useUserData from '../../../../hooks/useUserData';
 import '../../homepage.css';
 import NewTweetForm from './components/newTweetForm';
 import TweetList from './components/tweetList';
@@ -133,31 +151,20 @@ required once localStorage is setup.
 
 // prefillLocalStorage();
 
-const userList = JSON.parse(localStorage.userListLocal);
-
 function FeedContainer() {
 
   const divElementRef = useRef();
-
-  const getAllTweets = ()=>{
-    return JSON.parse(localStorage.tweetListLocal);
-  }
-
-  const [tweetList,setTweetList] = useState(()=>getAllTweets());
+  const [tweetList,setTweetList] = useTweetData();
+  const [,,getUserEntity] = useUserData();
   const [editTweetData,setEditTweetData] = useState(undefined);
 
   let tweetEntityList = [];
 
-  const getUserEntity = (userhandle)=>{
-    for(let user of userList){
-      if(user.userhandle === userhandle)
-        return user;
-    }
-  };
-
   const prepareTweets = useCallback(()=>{
     console.log("Prepare tweet called!");
     let tempTweetList = [];
+    //Use map
+    //------------------------------------------------
     for(let tweet of tweetList){
       let userhandle = tweet.userhandle;
       const user_entity = getUserEntity(userhandle);
@@ -174,7 +181,7 @@ function FeedContainer() {
     }
     tempTweetList.sort((a,b)=>(b.timestamp-a.timestamp));
     return tempTweetList;
-  },[tweetList]);
+  },[tweetList,getUserEntity]);
   
   tweetEntityList=useMemo(()=>prepareTweets(),[prepareTweets]);
 
@@ -184,6 +191,8 @@ function FeedContainer() {
     const id=userhandle+"-"+timestamp+"-0";
     const content = {
       id:id,
+      //wapis likhne ki zaroorat nhi
+      //---------------------------------------------
       userhandle:userhandle,
       text:tweet_text,
       image:imageName,
@@ -191,7 +200,10 @@ function FeedContainer() {
     };
     const tempTweetList = [content, ...tweetList];
     setTweetList(tempTweetList);
-  },[tweetList]);
+  },[tweetList,setTweetList]);
+  //setTweetList(prevList=>[content,..prevList])
+  //s
+  //...........................................
 
   const editTweet = useCallback((id,text,image)=>{
     let tweet;
@@ -204,14 +216,16 @@ function FeedContainer() {
     tweet.image=image;
     setTweetList(tempTweetList);
     setEditTweetData(undefined);
-  },[tweetList]);
+  },[tweetList,setTweetList]);
 
   const deleteTweet = useCallback((tweetId)=>{
+    //Arrow here
+    //--------------------------------------------------
     const tempTweetList = tweetList.filter(function(tweet){
       return tweet.id!==tweetId;
     });
     setTweetList(tempTweetList);
-  },[tweetList]);
+  },[tweetList,setTweetList]);
 
   const editTweetHandler = useCallback((tweetId,text,image)=>{
     setEditTweetData({
@@ -221,16 +235,6 @@ function FeedContainer() {
     });
     divElementRef.current.scrollTo(0, 0);
   },[]);
-
-  useEffect(()=>{
-    localStorage.tweetListLocal = JSON.stringify(tweetList);
-  },[tweetList]);
-
-  // useEffect(()=>{
-  //   return ()=>{
-  //     localStorage.tweetListLocal = JSON.stringify(tweetList);
-  //   }
-  // },[]);
 
   return (
     <div className='section-container feed-container' ref={divElementRef}>

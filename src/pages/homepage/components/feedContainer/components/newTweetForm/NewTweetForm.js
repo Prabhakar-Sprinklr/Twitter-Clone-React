@@ -12,6 +12,9 @@ const INIT_TWEET_TEXT = "Write Something Good !";
 function NewTweetForm({newTweetHandler,editTweetHandler,editTweetData}) {
     //---------------------------------------------------------------------------------------------------------
     //Remove useEffect at line 19
+    /*
+    agar setTweetText bahar kra toh wo toh infinite loop ho jaayega render ka
+    */
 
     const [tweet_text,setTweetText] = useState(INIT_TWEET_TEXT);
     const [imageName,setImageName] = useState("");
