@@ -6,15 +6,25 @@ import ShareIcon from '@mui/icons-material/Share';
 import EditIcon from '@mui/icons-material/Edit';
 import { getPic } from '../../../../../../../../data/constants';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { ACTIONS } from '../../../../../../../../data/constants';
 
 function TweetEntity({tweet,handleTweetDelete,handleTweetEdit}) {
 
     const handleDelete = ()=>{
-        handleTweetDelete(tweet.id);
+        handleTweetDelete(
+            {
+                type:ACTIONS.REMOVE_TWEET,
+                payload:{tweetId:tweet.id},
+            }
+        );
     }
 
     const handleEdit = ()=>{
-        handleTweetEdit(tweet.id, tweet.text, tweet.image);
+        handleTweetEdit({
+            tweetId:tweet.id, 
+            text:tweet.text, 
+            image:tweet.image
+        });
     }
 
   return (

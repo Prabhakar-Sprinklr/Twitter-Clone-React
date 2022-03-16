@@ -6,16 +6,12 @@ const useUserData1 = ()=>{
 
     const reducer = useCallback((state, action)=>{
 
-        const getUser = (userhandle)=>{
-            for(let user of state){
-                if(user.userhandle === userhandle)
-                    return user;
-            }
-        }
+        const getUser = (userhandle)=>(
+            state.find((user)=>(user.userhandle===userhandle))
+        )
 
         switch(action.type){
             case ACTIONS.FOLLOW:{
-                console.log("Follow");
                 //user1 should follow user2
                 //add user2 in following of user1
                 //add user1 in followers of user2
@@ -28,7 +24,6 @@ const useUserData1 = ()=>{
                 return [...(state.filter((user)=>(user.userhandle!==user1 && user.userhandle!==user2))),user1_entity,user2_entity];
                 }
             case ACTIONS.UNFOLLOW:{
-                console.log("Unfollow");
                 //user1 should unfollow user2
                 //remove user2 from following of user1
                 //remove user1 from followers of user2
@@ -46,24 +41,18 @@ const useUserData1 = ()=>{
 
     const [userList, dispatch] = useReducer(reducer,localStorage.userListLocal?JSON.parse(localStorage.userListLocal):INIT_USER_LIST)
 
-    const getUserEntity = useCallback((userhandle)=>{
-        for(let user of userList){
-            if(user.userhandle === userhandle)
-            return user;
-        }
-    },[userList]);
+    const getUserEntity = useCallback((userhandle)=>(
+        userList.find((user)=>(user.userhandle===userhandle))
+    ),[userList]);
 
     const getFollowersList = useCallback((userhandle)=>(getUserEntity(userhandle).followers),[getUserEntity]);
 
-    const isFollowing = (user1,user2)=>{
+    const isFollowing = useCallback((user1,user2)=>{
         const user_entity = getUserEntity(user1);
-        for(let follower of user_entity.following)
-        {
-            if(follower===user2)
-                return true;
-        }
+        if(user_entity.following.find((follower)=>(follower===user2)))
+            return true;
         return false;
-    }
+    },[getUserEntity]);
 
     useEffect(()=>{
         localStorage.userListLocal = JSON.stringify(userList);

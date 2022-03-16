@@ -84,4 +84,7 @@ export const INIT_USER_LIST = [
 export const ACTIONS = {
     FOLLOW:'follow',
     UNFOLLOW:'unfollow',
+    ADD_TWEET:'add-tweet',
+    REMOVE_TWEET:'remove-tweet',
+    EDIT_TWEET:'edit-tweet',
 }

@@ -4,17 +4,13 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import { getPic } from '../../../../../../data/constants';
+import { ACTIONS } from '../../../../../../data/constants';
 import './NewTweetForm.css'
 
 const userhandle = "userhandle";
 const INIT_TWEET_TEXT = "Write Something Good !";
 
 function NewTweetForm({newTweetHandler,editTweetHandler,editTweetData}) {
-    //---------------------------------------------------------------------------------------------------------
-    //Remove useEffect at line 19
-    /*
-    agar setTweetText bahar kra toh wo toh infinite loop ho jaayega render ka
-    */
 
     const [tweet_text,setTweetText] = useState(INIT_TWEET_TEXT);
     const [imageName,setImageName] = useState("");
@@ -33,12 +29,19 @@ function NewTweetForm({newTweetHandler,editTweetHandler,editTweetData}) {
             alert("Tweet Text should be between 5 to 100 characters!");
             return;
         }
-        newTweetHandler({userhandle,tweet_text,imageName});
+        newTweetHandler({
+            type: ACTIONS.ADD_TWEET,
+            payload:{userhandle,tweet_text,imageName}
+        });
         setTweetText(INIT_TWEET_TEXT);
         setImageName("");
     }   
     else{
-        editTweetHandler(editTweetData.tweetId,tweet_text,imageName);
+        editTweetHandler({
+            id:editTweetData.tweetId,
+            text:tweet_text,
+            image:imageName
+        });
         setTweetText(INIT_TWEET_TEXT);
         setImageName("");
     }
@@ -46,7 +49,7 @@ function NewTweetForm({newTweetHandler,editTweetHandler,editTweetData}) {
 
   const updateTweetText = (event)=>{
     setTweetText(event.target.value);
-  }
+  };
 
   const uploadImageHandler = (event)=>{
     console.log(event.target.files[0].name);
