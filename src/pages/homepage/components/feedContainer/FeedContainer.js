@@ -32,14 +32,14 @@ function FeedContainer() {
     return tempTweetList;
   },[tweetList,getUserEntity]);
 
-  const editTweet = ({id,text,image})=>{
+  const editTweet = useCallback(({id,text,image})=>{
     const action = {
       type:ACTIONS.EDIT_TWEET,
       payload:{id,text,image,}
     };
     dispatch(action);
     setEditTweetData(undefined);
-  };
+  },[dispatch]);
 
   const editTweetHandler = useCallback(({tweetId,text,image})=>{
     setEditTweetData({
@@ -51,7 +51,7 @@ function FeedContainer() {
   },[]);
 
   return (
-    <div className='section-container feed-container' ref={divElementRef}>
+    <div className='home-container__section-container feed-container' ref={divElementRef}>
         <NewTweetForm newTweetHandler={dispatch} editTweetHandler={editTweet} editTweetData={editTweetData}/>
         <TweetList tweetList={tweetEntityList} handleTweetDelete={dispatch} handleTweetEdit={editTweetHandler}/>
     </div>

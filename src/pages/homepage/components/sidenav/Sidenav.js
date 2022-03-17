@@ -7,8 +7,8 @@ import "../../homepage.css";
 function Sidenav() {
     
     return (
-        <nav className='section-container sidebar-container'>
-            <ul className="sidebar-option-list">
+        <nav className='home-container__section-container sidebar-container'>
+            <ul className="sidebar-container__option-list">
                 {OPTION_LIST.map(item=>(<SidebarNavOptions key={item.text} text={item.text} Icon={item.Icon} link={item.link} />))}
             </ul>
         </nav>

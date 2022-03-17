@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback } from 'react'
 import TwitterIcon from '@mui/icons-material/Twitter';
 import AppsIcon from '@mui/icons-material/Apps';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
@@ -6,38 +6,25 @@ import './header.css';
 
 function Header({toggleButton,viewState,toggleFunction}) {
 
-    let gridView,listView;
-    if(viewState==="grid"){
-        gridView=true;
-        listView=false;
-    }
-    else{
-        gridView=false;
-        listView=true;
-    }
+    const gridView = (viewState==="grid")?true:false;
+    const listView = (viewState==="grid")?false:true;
 
-    let button = (
-        <button type="button" className="view-toggle-button" onClick={toggleFunction}>
-            {gridView && (<AppsIcon></AppsIcon>)}
-            {listView && (<FormatListBulletedIcon></FormatListBulletedIcon>)}
+    const button = (
+        <button type="button" className="page-header__view-toggle-button" onClick={toggleFunction}>
+            {gridView && (<AppsIcon />)}
+            {listView && (<FormatListBulletedIcon />)}
         </button>
     );
     return (
-
-    //Add option to render the list/grid button too, so that this can be used
-    //profile page too.
-
-    <header id="page-header">
-        <div id="header-twitter-icon-container">
-            <a href="/" className="header-twitter-icon-link">
-                <TwitterIcon className='twitterIcon'></TwitterIcon>
+    <header className="page-header">
+        <div className="page-header__twitter-icon-container">
+            <a href="/" className="page-header__twitter-icon-link">
+                <TwitterIcon className='page-header__twitter-icon' />
             </a>
-
             {toggleButton && button}
-
         </div>
     </header>
     )
 }
 
-export default Header
+export default Header;

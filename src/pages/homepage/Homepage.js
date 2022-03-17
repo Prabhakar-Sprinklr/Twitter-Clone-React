@@ -10,9 +10,9 @@ function Homepage() {
     <Fragment>
         <Header toggleButton={false} />
         <div className='home-container'>
-            <FeedContainer className='section-container feed-container' />
-            <Sidenav className='section-container sidebar-container' />
-            <WidgetContainer className='section-container widget-container' />
+            <FeedContainer />
+            <Sidenav />
+            <WidgetContainer />
         </div>
     </Fragment>
   );

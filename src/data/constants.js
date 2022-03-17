@@ -1,7 +1,3 @@
-import pic1 from "../resources/batman-dp.jpeg";
-import pic2 from "../resources/batman2.jpeg";
-import pic3 from "../resources/default-dp.png";
-
 import {
     HomeIcon,
     ExploreIcon,
@@ -55,13 +51,6 @@ export const OPTION_LIST = [
         link:"/"
     },
 ];
-
-export const getPic = (imageName)=>{
-    if(imageName===undefined || imageName.includes("batman-dp")) return pic1;
-    else if(imageName.includes("batman2")) return pic2;
-    else if(imageName.includes("default"))return pic3;
-    return null;
-}
 
 export const INIT_TWEET_LIST = [
     {id: 'userhandle-1647335082521-0', userhandle: 'userhandle', text: 'Write Something Good ok updated 2!', image: 'batman-dp.jpeg', timestamp: 1647335082521},

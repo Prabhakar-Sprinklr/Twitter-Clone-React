@@ -3,7 +3,7 @@ import picture from "../../../../../../resources/batman-dp.jpeg";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
-import { getPic } from '../../../../../../data/constants';
+import getPic from '../../../../../../utils/getPic.js';
 import { ACTIONS } from '../../../../../../data/constants';
 import './NewTweetForm.css'
 
@@ -19,16 +19,16 @@ function NewTweetForm({newTweetHandler,editTweetHandler,editTweetData}) {
         setTweetText(editTweetData?.tweetText??INIT_TWEET_TEXT);
         if(editTweetData)
             setImageName(editTweetData?.imageName??"");
-    },[editTweetData])
+    },[editTweetData]);
 
 
   const submitForm = (event)=>{
     event.preventDefault();
-    if(editTweetData===undefined){
-        if(tweet_text.length<5 || tweet_text.length>100){
-            alert("Tweet Text should be between 5 to 100 characters!");
-            return;
-        }
+    if(tweet_text.length<5 || tweet_text.length>100){
+        alert("Tweet Text should be between 5 to 100 characters!");
+        return;
+    }
+    if(editTweetData === undefined){
         newTweetHandler({
             type: ACTIONS.ADD_TWEET,
             payload:{userhandle,tweet_text,imageName}
@@ -57,18 +57,18 @@ function NewTweetForm({newTweetHandler,editTweetHandler,editTweetData}) {
 
   return (
     <section className="new-tweet-area">
-        <div className="new-tweet-area-profile-pic"> 
-            <img className="profile-dp" src={picture} alt="Error in loading !" />     
+        <div> 
+            <img className="new-tweet-area__profile-dp" src={picture} alt="Error in loading !" />     
         </div>
-        <form className="new-tweet-box" onSubmit={submitForm}>
-            <textarea name="tweetText" className="new-tweet-input" value={tweet_text} onChange={updateTweetText} />
-            <input type="text" className={`${imageName!==""?"new-image-input":"new-image-input hide-element"}`} value={imageName} readOnly/>
+        <form className="new-tweet-form" onSubmit={submitForm}>
+            <textarea name="tweetText" className="new-tweet-form__tweet-text" value={tweet_text} onChange={updateTweetText} />
+            <input type="text" className={`${imageName!==""?"new-tweet-form__tweet-image":"new-tweet-form__tweet-image hide-element"}`} value={imageName} readOnly/>
             <div className={`${imageName!==""?"":"hide-element"}`}>
-                <img className="preview-image" height="70px" width="70px" src={getPic(imageName)} alt='None selected/Error in loading!'/>
+                <img height="70px" width="70px" src={getPic(imageName)} alt='None selected/Error in loading!'/>
             </div>
-            <div className='new-tweet-button-panel'>
+            <div className='new-tweet-form__button-panel'>
                 <label className="upload-image-button">
-                    <input type="file" onChange={uploadImageHandler}/>
+                    <input className="new-tweet-form__image-selector" type="file" onChange={uploadImageHandler}/>
                     <AddPhotoAlternateIcon />
                 </label>
 
@@ -80,7 +80,7 @@ function NewTweetForm({newTweetHandler,editTweetHandler,editTweetData}) {
                     <DeleteSweepIcon />
                 </button>
 
-                <button type="submit" id="tweet-box-tweet-button" >Tweet</button>
+                <button type="submit" id="new-tweet-form__tweet-button" >Tweet</button>
             </div>
         </form>
     </section>

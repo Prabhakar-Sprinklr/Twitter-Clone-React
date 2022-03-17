@@ -1,4 +1,52 @@
-.list-item-grid-view {
+.profile-pic-container {
+    flex: 0.2;
+}
+
+.profile-pic-container__profile-dp {
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+.friend-details-container {
+    width: 100%;
+    align-items: flex-start;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.friend-details-container__username {
+    font-size: medium;
+    font-weight: 600;
+}
+
+.friend-details-container__userid {
+    font-size: small;
+    color: darkslategrey;
+}
+
+.friend-follow-button-container{
+    flex: 0.2;
+    display: flex;
+    align-items: center;
+}
+
+.follow-button {
+    height: 30px;
+    width: 80px;
+    background-color: lightblue;
+    float: right;
+    border-radius: 20px;
+}
+
+.follow-button:hover{
+    cursor: pointer;
+}
+
+.list-item--grid-view {
     display: inline-block;
     flex: 1 1 150px;
     margin: 10px;
@@ -6,14 +54,14 @@
     border: 1px solid lightgrey;
 }
 
-.friend-entity {
+.friend-entity--list-view {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     width: 90%;
 }
 
-.friend-entity-grid-view{
+.friend-entity--grid-view{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -21,16 +69,17 @@
     justify-content: center;
 }
 
-.friend-details-container-grid-view{
+.friend-details-container--grid-view{
     align-items: center;
     width: fit-content;
     padding-left: 0px;
 }
 
-.username-grid-view {
+.friend-details-container__username--grid-view {
     width: fit-content;
 }
 
-.userid-grid-view {
+.friend-details-container__userid--grid-view {
     width: fit-content;
 }
+

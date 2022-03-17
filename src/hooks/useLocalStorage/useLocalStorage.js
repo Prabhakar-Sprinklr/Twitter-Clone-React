@@ -5,7 +5,7 @@ const init_func = (param)=>{
     const savedValue = JSON.parse(localStorage.getItem(key));
     if(savedValue) return savedValue;
     return fallback_value;
-}
+};
 
 const useLocalStorage = (key,initial_value,reducer_function)=>{
     const [state,dispatch] = useReducer(reducer_function,{key,fallback_value:initial_value},init_func);
@@ -14,6 +14,6 @@ const useLocalStorage = (key,initial_value,reducer_function)=>{
     },[key,state]);
 
     return [state,dispatch];
-}
+};
 
 export default useLocalStorage;

@@ -7,29 +7,29 @@
     margin: 5px 0px 5px 0px;
 }
 
-.tweet-profile-dp {
+.tweet__profile-dp {
     height: 40px;
     width: 40px;
     border-radius: 20px;
     margin: 5px;
 }
 
-.tweet-content{
+.tweet__content{
     flex:1;
     margin-right: 0px;
 }
 
-.username-text {
+.tweet__content__user-data__username {
     font-size: 18px;
     font-weight: bold;
 }
 
-.userhandle-text {
+.tweet__content__user-data__userhandle {
     font-size: 14px;
     color: grey;
 }
 
-.tweet-image {
+.tweet__content__image {
     display: block;
     margin: auto;
     max-width: 300px;
@@ -37,24 +37,24 @@
     border-radius: 5px;
 }
 
-.tweet-option-button-container {
+.tweet__option-button-panel {
     display: flex;
     margin: 5px auto 5px;
     justify-content: space-around;
 }
 
 
-.tweet-option-button {
+.tweet__option-button-panel__tweet-option-button {
     margin: auto;
 }
 
-.tweet-text-container {
+.tweet__content__text {
     text-align: justify;
     padding-right: 5px;
     margin: 5px 0px 5px 0px;
 }
 
-.tweet-user-data {
+.tweet__content__user-data {
     display: flex;
     justify-content: flex-start;
 }

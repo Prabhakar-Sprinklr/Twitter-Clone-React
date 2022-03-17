@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../styles/followersEntityCommon.css";
+import "./followersView.css";
 import "./followerEntity.css";
 import profilePic from "../../../../../../resources/batman2.jpeg";
 
@@ -14,16 +14,16 @@ const FollowerEntity = ({user,isFollowing,grid,toggleFollowing})=>{
     }
 
     return (
-    <li className={grid?"list-item-grid-view":""}>
-        <article className={grid?"friend-entity-grid-view":"friend-entity"}>
+    <li className={grid?"list-item--grid-view":""}>
+        <article className={grid?"friend-entity--grid-view":"friend-entity--list-view"}>
             <div className="profile-pic-container">
-                <img className="tweet-profile-dp" src={profilePic} alt="Unable to load!" />
+                <img className="profile-pic-container__profile-dp" src={profilePic} alt="Unable to load!" />
             </div>
-            <div className={`friend-details-container ${grid?'friend-details-container-grid-view':''}`}>
-                <address className={`username ${grid?'username-grid-view':''}`}>
+            <div className={`friend-details-container ${grid?'friend-details-container--grid-view':''}`}>
+                <address className={`friend-details-container__username ${grid?'friend-details-container__username--grid-view':''}`}>
                     {user.username}
                 </address>
-                <address className={`userid ${grid?'userid-grid-view':''}`}>@{user.userhandle}</address>
+                <address className={`friend-details-container__userid ${grid?'friend-details-container__userid--grid-view':''}`}>@{user.userhandle}</address>
             </div>
             <div className="friend-follow-button-container">
                 <button type="button" className="follow-button" onClick={toggleFollowingHandler}> {buttonTask} </button>

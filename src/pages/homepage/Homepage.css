@@ -5,7 +5,7 @@
     /* background-color: grey; */
 }
 
-.section-container {
+.home-container__section-container {
     margin: 10px;
     border: 2px;
     height: 100vh;
@@ -48,7 +48,7 @@
     display: none;
 }
 
-.sidebar-option-list {
+.sidebar-container__option-list {
     list-style-type: none;
 }
 

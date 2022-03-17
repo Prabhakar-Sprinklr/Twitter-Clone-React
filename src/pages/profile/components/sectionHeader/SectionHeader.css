@@ -1,4 +1,4 @@
-.friend-list-header-container {
+.section-header-container {
     position: sticky;
     top: 0%;
     background: white;
@@ -6,9 +6,7 @@
     padding-top: 15px;
 }
 
-.friend-list-header {
-    /* position: sticky;
-    top: 1%; */
+.section-header-container__header {
     display: flex;
     justify-content: center;
     align-items: center;

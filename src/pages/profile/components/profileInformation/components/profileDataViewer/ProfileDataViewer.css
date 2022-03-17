@@ -1,19 +1,16 @@
-.user-profile-username{
+.user-profile-information__username{
     margin-top: 20px;
     font-weight: 600;
     font-size: 2em;
 }
 
-.user-profile-userid{
+.user-profile-information__userid{
     font-size:1.5em;
     color: darkslategrey;
 }
 
-.status {
+.user-profile-information__status {
     font-size: 1.2em;
     color: rgb(48, 12, 12);
-}
-
-.center-text{
     text-align: center;
 }

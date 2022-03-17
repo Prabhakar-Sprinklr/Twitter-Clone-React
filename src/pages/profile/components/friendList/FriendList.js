@@ -7,7 +7,7 @@ function FriendList({grid,followers,toggleFollowing}) {
     return (
         <section className="friend-list-container">
             <SectionHeader text="FOLLOWERS LIST" />
-            <main className='friend-list'>
+            <main className='friend-list-container__friend-list'>
                 <FollowersView followers={followers} grid={grid} toggleFollowing={toggleFollowing}/>
             </main>
         </section>

@@ -6,7 +6,7 @@ import './tweetList.css'
 function TweetList({tweetList,handleTweetDelete,handleTweetEdit}) {
   return (
     <div>
-        <ul className='tweetlist'>
+        <ul className='tweet-list'>
             {tweetList.map((tweet)=>{
               return (
                 <li key={tweet.id}>

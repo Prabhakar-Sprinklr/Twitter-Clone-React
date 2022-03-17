@@ -8,26 +8,26 @@
     border-radius: 10px;
 }
 
-.new-tweet-box {
+.new-tweet-form {
     width: 85%;
 }
 
-.new-tweet-input{
+.new-tweet-form__tweet-text{
     height: 25px;
     width: 100%;
 }
 
-.new-image-input {
+.new-tweet-form__tweet-image {
     height:20px;
     width:100%;
     margin-bottom: 5px;
 }
 
-.new-tweet-button-panel {
+.new-tweet-form__button-panel {
     text-align: left;
 }
 
-.profile-dp {
+.new-tweet-area__profile-dp {
     height: 50px;
     width: 50px;
     border-radius: 25px;
@@ -61,7 +61,7 @@
     border-color: black;
 }
 
-#tweet-box-tweet-button {
+#new-tweet-form__tweet-button {
     height: 30px;
     width: 80px;
     background-color: #1DA1F2;
@@ -69,10 +69,10 @@
     border-radius: 20px;
 }
 
-#tweet-box-tweet-button:hover{
+#tnew-tweet-form__tweet-button:hover{
     background-color: lightcoral;
 }
 
-input[type="file"] {
+.new-tweet-form__image-selector {
     display: none;
 }

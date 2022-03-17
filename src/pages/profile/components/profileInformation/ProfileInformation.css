@@ -1,4 +1,4 @@
-.user-profile-information {
+.user-profile-information-box {
     flex: 0.4;
     background-color: aliceblue;
     height: 100vh;
@@ -6,7 +6,7 @@
     /* border-radius: 30px; */
 }
 
-.profile-information-container {
+.user-profile-information-box__profile-information-container {
     display: flex;
     flex-direction: column;
     justify-content: center;

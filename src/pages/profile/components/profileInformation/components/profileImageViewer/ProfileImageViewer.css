@@ -2,15 +2,9 @@
     position: relative;
 }
 
-.tweet-image {
+.image-container-div__profile-dp-main{
     display: block;
     margin: auto;
-    max-width: 300px;
-    max-height: 300px;
-    border-radius: 5px;
-}
-
-.profile-dp-main{
     height: 300px;
     width: 300px;
     border-radius: 150px;

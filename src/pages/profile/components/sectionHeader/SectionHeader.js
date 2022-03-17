@@ -3,8 +3,8 @@ import './sectionHeader.css';
 
 function SectionHeader({text}) {
   return (
-    <div className="friend-list-header-container">
-        <header className="friend-list-header" > {text} </header>
+    <div className="section-header-container">
+        <header className="section-header-container__header" > {text} </header>
     </div>
   )
 }

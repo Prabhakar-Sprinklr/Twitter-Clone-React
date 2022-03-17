@@ -6,6 +6,6 @@
     border-left: 2px solid grey;
 }
 
-.friend-list {
+.friend-list-container__friend-list {
     margin: 10px auto 10px 20px;
 }

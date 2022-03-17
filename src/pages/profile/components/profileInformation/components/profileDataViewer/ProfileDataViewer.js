@@ -5,10 +5,10 @@ function ProfileDataViewer() {
   return (
     <Fragment>
         <address>
-            <div className="user-profile-username center-text">PRABHAKAR KUMAR</div>
-            <div className="user-profile-userid center-text">@PrabhakarKumar</div>
+            <div className="user-profile-information__username center-text">PRABHAKAR KUMAR</div>
+            <div className="user-profile-information__userid center-text">@PrabhakarKumar</div>
         </address>
-        <div className="status center-text">" Learning Frontend Dev :-) "</div>
+        <div className="user-profile-information__status">" Learning Frontend Dev :-) "</div>
     </Fragment>
   )
 }

@@ -4,10 +4,10 @@ import './sidebarNavOptions.css';
 function SidebarNavOptions({link , Icon, text}) {
   return (
     <li>
-        <a href={link} className='sidebar-navigation-link'>
-            <div className="sidebar-anchor-button">
+        <a href={link} className='sidebar__navigation-link'>
+            <div className="sidebar__anchor-button">
                 <Icon />
-                <span className='sidebar-option-name'>{text}</span>
+                <span className='sidebar__option-name'>{text}</span>
             </div>
         </a>
     </li>

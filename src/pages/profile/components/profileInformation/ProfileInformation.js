@@ -6,9 +6,9 @@ import SectionHeader from '../sectionHeader/SectionHeader';
 
 function ProfileInformation() {
   return (
-    <section className="user-profile-information">
+    <section className="user-profile-information-box">
         <SectionHeader text="PROFILE INFORMATION" />
-        <section className="profile-information-container">
+        <section className="user-profile-information-box__profile-information-container">
             <ProfileImageViewer />
             <ProfileDataViewer />
         </section>
