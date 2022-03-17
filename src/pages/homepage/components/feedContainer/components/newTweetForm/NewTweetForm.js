@@ -52,7 +52,6 @@ function NewTweetForm({newTweetHandler,editTweetHandler,editTweetData}) {
   };
 
   const uploadImageHandler = (event)=>{
-    console.log(event.target.files[0].name);
     setImageName(event.target.files[0].name);
   }
 

@@ -11,15 +11,12 @@ function FeedContainer() {
 
   const divElementRef = useRef();
   const [tweetList,dispatch] = useTweetData();
-  const [,,getUserEntity] = useUserData();
+  const {getUserEntity} = useUserData();
   const [editTweetData,setEditTweetData] = useState(undefined);
-
-  let tweetEntityList = [];
-
-  const prepareTweets = useCallback(()=>{
-    console.log("Prepare tweet called!");
+  
+  const tweetEntityList=useMemo(()=>{
     let tempTweetList = tweetList.map((tweet)=>{
-      let userhandle = tweet.userhandle;
+      const userhandle = tweet.userhandle;
       const user_entity = getUserEntity(userhandle);
       return {
         id:tweet.id,
@@ -34,8 +31,6 @@ function FeedContainer() {
     tempTweetList.sort((a,b)=>(b.timestamp-a.timestamp));
     return tempTweetList;
   },[tweetList,getUserEntity]);
-  
-  tweetEntityList=useMemo(()=>prepareTweets(),[prepareTweets]);
 
   const editTweet = ({id,text,image})=>{
     const action = {
@@ -63,4 +58,4 @@ function FeedContainer() {
   )
 }
 
-export default FeedContainer
+export default FeedContainer;
