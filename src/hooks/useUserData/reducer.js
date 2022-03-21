@@ -15,7 +15,13 @@ const reducer = (state, action)=>{
             const user1_entity = getUser(action.payload.user1);
             const user2_entity = getUser(action.payload.user2);
             user1_entity.following.push(user2);
-            user2_entity.followers.push(user1);
+            user2_entity.followers.push(
+                {
+                    userhandle:user1,
+                    username:user1_entity.username,
+                    profilepic:user1_entity.profilepic,
+                }
+            );
             return [...(state.filter((user)=>(user.userhandle!==user1 && user.userhandle!==user2))),user1_entity,user2_entity];
             }
         case ACTIONS.UNFOLLOW:{
@@ -27,7 +33,7 @@ const reducer = (state, action)=>{
             const user1_entity = getUser(action.payload.user1);
             const user2_entity = getUser(action.payload.user2);
             user1_entity.following = user1_entity.following.filter((userhandle)=>(userhandle!==user2));
-            user2_entity.followers = user2_entity.followers.filter((userhandle)=>(userhandle!==user1));
+            user2_entity.followers = user2_entity.followers.filter((follower)=>(follower.userhandle!==user1));
             return [...(state.filter((user)=>(user.userhandle!==user1 && user.userhandle!==user2))),user1_entity,user2_entity];
             }
         default: return state;

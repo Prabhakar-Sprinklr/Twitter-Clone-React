@@ -1,36 +1,18 @@
-import React,{ useRef, useState, useMemo, useCallback } from 'react';
+import React,{ useRef, useState, useCallback } from 'react';
 import { ACTIONS } from '../../../../data/constants';
-import useTweetData from '../../../../hooks/useTweetData';
-import useUserData from '../../../../hooks/useUserData';
 import '../../homepage.css';
 import NewTweetForm from './components/newTweetForm';
 import TweetList from './components/tweetList';
+import { INIT_TWEET_LIST } from '../../../../data/constants';
+import useLocalStorage from '../../../../hooks/useLocalStorage';
+import reducer from "./reducer";
 
 
 function FeedContainer() {
 
   const divElementRef = useRef();
-  const [tweetList,dispatch] = useTweetData();
-  const {getUserEntity} = useUserData();
+  const [tweetList,dispatch] = useLocalStorage("tweetListLocal",INIT_TWEET_LIST,reducer);
   const [editTweetData,setEditTweetData] = useState(undefined);
-  
-  const tweetEntityList=useMemo(()=>{
-    let tempTweetList = tweetList.map((tweet)=>{
-      const userhandle = tweet.userhandle;
-      const user_entity = getUserEntity(userhandle);
-      return {
-        id:tweet.id,
-        username:user_entity.username,
-        userid:userhandle,
-        profilepic:user_entity.profilepic,
-        text:tweet.text,
-        image:tweet.image,
-        timestamp:tweet.timestamp,
-      }
-    });
-    tempTweetList.sort((a,b)=>(b.timestamp-a.timestamp));
-    return tempTweetList;
-  },[tweetList,getUserEntity]);
 
   const editTweet = useCallback(({id,text,image})=>{
     const action = {
@@ -53,7 +35,7 @@ function FeedContainer() {
   return (
     <div className='home-container__section-container feed-container' ref={divElementRef}>
         <NewTweetForm newTweetHandler={dispatch} editTweetHandler={editTweet} editTweetData={editTweetData}/>
-        <TweetList tweetList={tweetEntityList} handleTweetDelete={dispatch} handleTweetEdit={editTweetHandler}/>
+        <TweetList tweetList={tweetList} handleTweetDelete={dispatch} handleTweetEdit={editTweetHandler}/>
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { ACTIONS } from "../../data/constants";
+import { ACTIONS } from "../../../../data/constants";
 const reducer = (state,action)=>{
     switch(action.type){
         case ACTIONS.ADD_TWEET : {
@@ -22,9 +22,13 @@ const reducer = (state,action)=>{
         }
         case ACTIONS.EDIT_TWEET : {
             const {id,text,image} = action.payload;
-            const tweet = state.find((tweet)=>(tweet.id === id));
-            state=state.filter((tweet)=>(tweet.id !== id));
-            return [...state,{...tweet,text,image}];
+            //The following copying is necessary becuase we cant make direct changes
+            //in the arguments of the function. We need to conserve the arguments.
+            const tempState = [...state];
+            const tweet = tempState.find((tweet)=>(tweet.id===id));
+            tweet.text=text;
+            tweet.image=image;
+            return tempState;
         }
         default : return state;
     }

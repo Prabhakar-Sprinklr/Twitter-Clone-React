@@ -7,17 +7,9 @@ const userhandle = "userhandle";
 
 function FriendListContainer({grid}) {
 
-  const {dispatch,getUserEntity,getFollowerList,isFollowing} = useUserData();
+  const {dispatch,getFollowerList} = useUserData();
 
-  const followersList = useMemo(()=>{
-    const followers = getFollowerList(userhandle);
-    return followers.map((follower)=>(
-      {
-        userEntity:getUserEntity(follower),
-        isFollowing:isFollowing(userhandle,follower),
-      }
-    ));
-  },[getFollowerList,getUserEntity,isFollowing]);
+  const followersList = useMemo(()=>getFollowerList(userhandle),[getFollowerList]) ;
 
   const toggleFollowing = useCallback((followerid,currentFollowing)=>{
     let action = {

@@ -7,20 +7,22 @@ const useUserData = ()=>{
 
     const [userList, dispatch] = useLocalStorage("userListLocal",INIT_USER_LIST,reducer);
 
-    const getUserEntity = useCallback((userhandle)=>(
-        userList.find((user)=>(user.userhandle === userhandle))
-    ),[userList]);
+    const getFollowerList = useCallback((userhandle)=>{
+        const userEntity = userList.find((user)=>(user.userhandle === userhandle));
+        const followingList = userEntity.following;
+        const followersList = userEntity.followers;
+        const isFollowing = (followerUserhandle)=>{
+            if(followingList.find((follower)=>(follower===followerUserhandle)))
+                return true;
+            return false;
+        }
+        return followersList.map((follower)=>({
+            follower,
+            isFollowing:isFollowing(follower.userhandle),
+        }));
+    },[userList]);
 
-    const getFollowerList = useCallback((userhandle)=>(getUserEntity(userhandle).followers),[getUserEntity]);
-
-    const isFollowing = useCallback((user1,user2)=>{
-        const user_entity = getUserEntity(user1);
-        if(user_entity.following.find((follower)=>(follower === user2)))
-            return true;
-        return false;
-    },[getUserEntity]);
-
-    return {userList,dispatch,getUserEntity,getFollowerList,isFollowing};
+    return {dispatch,getFollowerList};
 
 };
 

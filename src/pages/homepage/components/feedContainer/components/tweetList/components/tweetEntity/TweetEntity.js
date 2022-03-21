@@ -36,7 +36,7 @@ function TweetEntity({tweet,handleTweetDelete,handleTweetEdit}) {
             <div>
                 <address className='tweet__content__user-data'> 
                     <span className="tweet__content__user-data__username">{tweet.username}</span> 
-                    <span className="tweet__content__user-data__userhandle">@{tweet.userid}</span>
+                    <span className="tweet__content__user-data__userhandle">@{tweet.userhandle}</span>
                 </address>
                 <div className='tweet__content__text'>{tweet.text}</div>
             </div>
