@@ -3,12 +3,12 @@ import './friendList.css'
 import SectionHeader from "../sectionHeader";
 import FollowersView from './components/followersView';
 
-function FriendList({grid,followers,toggleFollowing}) {
+function FriendList({isGrid,followers,toggleFollowing}) {
     return (
         <section className="friend-list-container">
             <SectionHeader text="FOLLOWERS LIST" />
             <main className='friend-list-container__friend-list'>
-                <FollowersView followers={followers} grid={grid} toggleFollowing={toggleFollowing}/>
+                <FollowersView followers={followers} isGrid={isGrid} toggleFollowing={toggleFollowing}/>
             </main>
         </section>
     )

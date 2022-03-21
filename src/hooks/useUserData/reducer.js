@@ -7,34 +7,28 @@ const reducer = (state, action)=>{
 
     switch(action.type){
         case ACTIONS.FOLLOW:{
-            //user1 should follow user2
-            //add user2 in following of user1
-            //add user1 in followers of user2
-            const user1 = action.payload.user1;
-            const user2 = action.payload.user2;
-            const user1_entity = getUser(action.payload.user1);
-            const user2_entity = getUser(action.payload.user2);
-            user1_entity.following.push(user2);
-            user2_entity.followers.push(
+            const currentUser = action.payload.user1,
+                follower = action.payload.user2;
+            const currentUser_entity = getUser(currentUser),
+                follower_entity = getUser(follower);
+            currentUser_entity.following.push(follower);
+            follower_entity.followers.push(
                 {
-                    userhandle:user1,
-                    username:user1_entity.username,
-                    profilepic:user1_entity.profilepic,
+                    userhandle:currentUser,
+                    username:currentUser_entity.username,
+                    profilepic:currentUser_entity.profilepic,
                 }
             );
-            return [...(state.filter((user)=>(user.userhandle!==user1 && user.userhandle!==user2))),user1_entity,user2_entity];
+            return [...(state.filter((user)=>(user.userhandle!==currentUser && user.userhandle!==follower))),currentUser_entity,follower_entity];
             }
         case ACTIONS.UNFOLLOW:{
-            //user1 should unfollow user2
-            //remove user2 from following of user1
-            //remove user1 from followers of user2
-            const user1 = action.payload.user1;
-            const user2 = action.payload.user2;
-            const user1_entity = getUser(action.payload.user1);
-            const user2_entity = getUser(action.payload.user2);
-            user1_entity.following = user1_entity.following.filter((userhandle)=>(userhandle!==user2));
-            user2_entity.followers = user2_entity.followers.filter((follower)=>(follower.userhandle!==user1));
-            return [...(state.filter((user)=>(user.userhandle!==user1 && user.userhandle!==user2))),user1_entity,user2_entity];
+            const currentUser = action.payload.user1,
+                follower = action.payload.user2;
+            const currentUser_entity = getUser(currentUser),
+                follower_entity = getUser(follower);
+            currentUser_entity.following = currentUser_entity.following.filter((userhandle)=>(userhandle!==follower));
+            follower_entity.followers = follower_entity.followers.filter((follower)=>(follower.userhandle!==currentUser));
+            return [...(state.filter((user)=>(user.userhandle!==currentUser && user.userhandle!==follower))),currentUser_entity,follower_entity];
             }
         default: return state;
     }

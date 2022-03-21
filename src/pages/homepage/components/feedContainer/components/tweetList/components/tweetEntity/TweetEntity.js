@@ -8,16 +8,16 @@ import getPic from '../../../../../../../../utils/getPic';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { ACTIONS } from '../../../../../../../../data/constants';
 
-function TweetEntity({tweet,handleTweetDelete,handleTweetEdit}) {
+function TweetEntity({tweet,dispatch,handleTweetEdit}) {
 
     const handleDelete = useCallback(()=>{
-        handleTweetDelete(
+        dispatch(
             {
                 type:ACTIONS.REMOVE_TWEET,
                 payload:{tweetId:tweet.id},
             }
         );
-    },[handleTweetDelete,tweet.id]);
+    },[dispatch,tweet.id]);
 
     const handleEdit = useCallback(()=>{
         handleTweetEdit({

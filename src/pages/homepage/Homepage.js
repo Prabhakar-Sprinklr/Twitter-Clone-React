@@ -8,7 +8,7 @@ import './homepage.css';
 function Homepage() {
   return (
     <Fragment>
-        <Header toggleButton={false} />
+        <Header shouldShowToggleButton={false} />
         <div className='home-container'>
             <FeedContainer />
             <Sidenav />

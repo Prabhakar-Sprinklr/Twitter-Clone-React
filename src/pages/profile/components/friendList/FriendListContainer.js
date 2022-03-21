@@ -5,7 +5,7 @@ import { ACTIONS } from '../../../../data/constants';
 
 const userhandle = "userhandle";
 
-function FriendListContainer({grid}) {
+function FriendListContainer({isGrid}) {
 
   const {dispatch,getFollowerList} = useUserData();
 
@@ -24,7 +24,7 @@ function FriendListContainer({grid}) {
   },[dispatch]);
 
   return (
-        <FriendList grid={grid} followers={followersList} toggleFollowing={toggleFollowing} />
+        <FriendList isGrid={isGrid} followers={followersList} toggleFollowing={toggleFollowing} />
   );
 }
 

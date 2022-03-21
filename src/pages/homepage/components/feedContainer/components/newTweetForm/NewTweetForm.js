@@ -8,9 +8,11 @@ import { ACTIONS } from '../../../../../../data/constants';
 import './NewTweetForm.css'
 
 const userhandle = "userhandle";
+const username = "Username";
+const porfilepic = "batman-dp.jpeg";
 const INIT_TWEET_TEXT = "Write Something Good !";
 
-function NewTweetForm({newTweetHandler,editTweetHandler,editTweetData}) {
+function NewTweetForm({dispatch,editTweetHandler,editTweetData}) {
 
     const [tweet_text,setTweetText] = useState(INIT_TWEET_TEXT);
     const [imageName,setImageName] = useState("");
@@ -29,9 +31,9 @@ function NewTweetForm({newTweetHandler,editTweetHandler,editTweetData}) {
         return;
     }
     if(editTweetData === undefined){
-        newTweetHandler({
+        dispatch({
             type: ACTIONS.ADD_TWEET,
-            payload:{userhandle,tweet_text,imageName}
+            payload:{userhandle,tweet_text,imageName,username,porfilepic}
         });
         setTweetText(INIT_TWEET_TEXT);
         setImageName("");

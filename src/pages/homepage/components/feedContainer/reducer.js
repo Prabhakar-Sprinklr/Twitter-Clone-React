@@ -2,7 +2,7 @@ import { ACTIONS } from "../../../../data/constants";
 const reducer = (state,action)=>{
     switch(action.type){
         case ACTIONS.ADD_TWEET : {
-            const {userhandle,tweet_text} = action.payload;
+            const {userhandle,tweet_text,username,profilepic} = action.payload;
             let imageName = action.payload.imageName;
             const timestamp = Date.now();
             if(imageName === "") imageName="batman-dp.jpeg";
@@ -10,6 +10,8 @@ const reducer = (state,action)=>{
             const content = {
                 id,
                 userhandle,
+                username,
+                profilepic,
                 text:tweet_text,
                 image:imageName,
                 timestamp,

@@ -6,23 +6,18 @@ import "./profile.css";
 
 function Profile() {
 
-  const [viewState,setViewState] = useState("grid");
+  const [isGrid,setIsGrid] = useState(true);
 
   const toggleState = ()=>{
-    if(viewState==="grid")
-      setViewState("list");
-    else
-      setViewState("grid");
+    setIsGrid((prevState)=>(!prevState));
   };
-
-  const isGrid = (viewState==="grid");
 
   return (
     <Fragment>
-    <Header toggleButton={true} viewState={viewState} toggleFunction={toggleState} />
+    <Header shouldShowToggleButton={true} isGrid={isGrid} toggleView={toggleState} />
     <div className="home-container profile-home-container">
       <ProfileInformation/>
-      <FriendListContainer grid={isGrid}/>
+      <FriendListContainer isGrid={isGrid}/>
     </div>
     </Fragment>
   );

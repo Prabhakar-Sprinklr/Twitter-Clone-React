@@ -34,8 +34,8 @@ function FeedContainer() {
 
   return (
     <div className='home-container__section-container feed-container' ref={divElementRef}>
-        <NewTweetForm newTweetHandler={dispatch} editTweetHandler={editTweet} editTweetData={editTweetData}/>
-        <TweetList tweetList={tweetList} handleTweetDelete={dispatch} handleTweetEdit={editTweetHandler}/>
+        <NewTweetForm dispatch={dispatch} editTweetHandler={editTweet} editTweetData={editTweetData}/>
+        <TweetList tweetList={tweetList} dispatch={dispatch} handleTweetEdit={editTweetHandler}/>
     </div>
   )
 }
