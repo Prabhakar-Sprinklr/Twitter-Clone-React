@@ -1,1 +1,1 @@
-export {default} from "./FeedContainer.js";
+export {default} from "./FeedContainer";

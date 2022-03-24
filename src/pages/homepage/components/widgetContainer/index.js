@@ -1,1 +1,1 @@
-export {default} from "./WidgetContainer.js";
+export {default} from "./WidgetContainer";

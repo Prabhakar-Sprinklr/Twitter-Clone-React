@@ -1,18 +1,38 @@
-import React, {memo, useEffect, useState} from 'react'
-import picture from "../../../../../../resources/batman-dp.jpeg";
+import React, {memo, useEffect, useState} from 'react';
+// import picture from "../../../../../../resources/batman-dp.jpeg";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import AttachmentIcon from '@mui/icons-material/Attachment';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import getPic from '../../../../../../utils/getPic.js';
 import { ACTIONS } from '../../../../../../data/constants';
-import './NewTweetForm.css'
+import './NewTweetForm.css';
+const picture =  require("../../../../../../resources/batman-dp.jpeg");
+
+type EditTweetInformationType = {
+    tweetId : string,
+    tweetText : string,
+    imageName : string,
+};
+
+type EditTweetParameterType = {
+    id : string,
+    text : string,
+    image : string,
+};
+
 
 const userhandle = "userhandle";
 const username = "Username";
 const porfilepic = "batman-dp.jpeg";
 const INIT_TWEET_TEXT = "Write Something Good !";
 
-function NewTweetForm({dispatch,editTweetHandler,editTweetData}) {
+type FormType = {
+    dispatch : (action:object)=>object,
+    editTweetHandler : ({id,text,image}:EditTweetParameterType)=>void,
+    editTweetData : EditTweetInformationType,
+}
+
+function NewTweetForm({dispatch,editTweetHandler,editTweetData}:FormType) {
 
     const [tweet_text,setTweetText] = useState(INIT_TWEET_TEXT);
     const [imageName,setImageName] = useState("");
@@ -24,7 +44,7 @@ function NewTweetForm({dispatch,editTweetHandler,editTweetData}) {
     },[editTweetData]);
 
 
-  const submitForm = (event)=>{
+  const submitForm = (event:React.FormEvent<HTMLFormElement>)=>{
     event.preventDefault();
     if(tweet_text.length<5 || tweet_text.length>100){
         alert("Tweet Text should be between 5 to 100 characters!");
@@ -49,12 +69,12 @@ function NewTweetForm({dispatch,editTweetHandler,editTweetData}) {
     }
   };
 
-  const updateTweetText = (event)=>{
+  const updateTweetText = (event:React.ChangeEvent<HTMLTextAreaElement>)=>{
     setTweetText(event.target.value);
   };
 
-  const uploadImageHandler = (event)=>{
-    setImageName(event.target.files[0].name);
+  const uploadImageHandler = (event:React.ChangeEvent<HTMLInputElement>)=>{
+    setImageName(((event.target as HTMLInputElement).files as FileList)[0].name);
   }
 
   return (

@@ -20,7 +20,7 @@ const reducer = (state,action)=>{
         }
         case ACTIONS.REMOVE_TWEET : {
             const tweetId = action.payload.tweetId;
-            return state.filter((tweet)=>(tweet.id!=tweetId));
+            return state.filter((tweet)=>(tweet.id!==tweetId));
         }
         case ACTIONS.EDIT_TWEET : {
             const {id,text,image} = action.payload;

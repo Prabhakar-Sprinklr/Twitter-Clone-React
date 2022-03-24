@@ -1,1 +1,1 @@
-export {default} from "./ProfileDataViewer.js";
+export {default} from "./ProfileDataViewer";

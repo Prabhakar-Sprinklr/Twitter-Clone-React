@@ -1,1 +1,1 @@
-export {default} from "./FriendListContainer.js";
+export {default} from "./FriendListContainer";

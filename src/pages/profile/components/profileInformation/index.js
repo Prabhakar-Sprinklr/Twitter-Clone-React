@@ -1,1 +1,1 @@
-export {default} from "./ProfileInformation.js";
+export {default} from "./ProfileInformation";

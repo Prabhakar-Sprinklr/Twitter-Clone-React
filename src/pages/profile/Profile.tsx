@@ -4,9 +4,9 @@ import Header from '../../components/header';
 import ProfileInformation from './components/profileInformation';
 import "./profile.css";
 
-function Profile() {
+function Profile() : JSX.Element {
 
-  const [isGrid,setIsGrid] = useState(true);
+  const [isGrid,setIsGrid] = useState<boolean>(true);
 
   const toggleState = ()=>{
     setIsGrid((prevState)=>(!prevState));

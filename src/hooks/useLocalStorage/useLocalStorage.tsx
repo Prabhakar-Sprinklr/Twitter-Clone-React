@@ -1,13 +1,20 @@
 import { useEffect, useReducer } from "react";
 
-const init_func = (param)=>{
+type InitParam = {
+    key:string,
+    fallback_value:object[],
+};
+
+type ReducerType = (state:object[],action:object)=>object[];
+
+const init_func = (param:InitParam)=>{
     const {key,fallback_value} = param;
     const locallySavedValue = localStorage.getItem(key);
     if(!locallySavedValue) return fallback_value;
-    return JSON.parse(localStorage.getItem(key));
+    return JSON.parse(localStorage.getItem(key) as string);
 };
 
-const useLocalStorage = (key,initial_value,reducer_function)=>{
+const useLocalStorage = (key:string,initial_value:object[],reducer_function:ReducerType)=>{
     const [state,dispatch] = useReducer(reducer_function,{key,fallback_value:initial_value},init_func);
     
     useEffect(()=>{

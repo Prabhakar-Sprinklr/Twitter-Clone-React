@@ -1,7 +1,16 @@
 import React from 'react';
 import './sidebarNavOptions.css';
+import {
+    HomeIcon
+} from '../../../../../../data/buttons';
 
-function SidebarNavOptions({link , Icon, text}) {
+type Props = {
+    link : string,
+    Icon : React.ElementType,
+    text : string,
+}
+
+function SidebarNavOptions({link , Icon, text}:Props) {
   return (
     <li>
         <a href={link} className='sidebar__navigation-link'>
@@ -14,4 +23,4 @@ function SidebarNavOptions({link , Icon, text}) {
   )
 }
 
-export default SidebarNavOptions
+export default SidebarNavOptions;

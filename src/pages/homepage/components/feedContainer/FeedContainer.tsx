@@ -1,0 +1,72 @@
+import React,{ useRef, useState, useCallback } from 'react';
+import { ACTIONS } from '../../../../data/constants';
+import '../../homepage.css';
+import NewTweetForm from './components/newTweetForm';
+import TweetList from './components/tweetList';
+import { INIT_TWEET_LIST } from '../../../../data/constants';
+import useLocalStorage from '../../../../hooks/useLocalStorage';
+import reducer from "./reducer";
+
+type EditTweetInformationType = {
+    tweetId : string,
+    tweetText : string,
+    imageName : string,
+};
+
+type EditTweetParameterType = {
+    id : string,
+    text : string,
+    image : string,
+};
+
+type EditTweetHandlerType = {
+  tweetId:string,
+  text:string,
+  image:string,
+};
+
+type TweetType = {
+  id: string, 
+  userhandle: string, 
+  username: string, 
+  profilepic:string, 
+  text: string, 
+  image: string,
+  timestamp: number,
+}
+
+type DispatchFunctionType = (action: object) => object;
+
+function FeedContainer() {
+
+  const divElementRef = useRef<HTMLDivElement>(null);
+  const [tweetList,dispatch] = useLocalStorage("tweetListLocal",INIT_TWEET_LIST,reducer);
+  const [editTweetData,setEditTweetData] = useState<EditTweetInformationType | undefined>(undefined);
+
+  const editTweet = useCallback(({id,text,image}:EditTweetParameterType)=>{
+    const action = {
+      type:ACTIONS.EDIT_TWEET,
+      payload:{id,text,image,}
+    };
+    (dispatch as React.Dispatch<object>)(action);
+    setEditTweetData(undefined);
+  },[dispatch]);
+
+  const editTweetHandler = useCallback(({tweetId,text,image}:EditTweetHandlerType)=>{
+    setEditTweetData({
+      tweetId,
+      tweetText: text,
+      imageName: image,
+    });
+    //divElementRef?.current?.scrollTo(0, 0);
+  },[]);
+
+  return (
+    <div className='home-container__section-container feed-container' ref={divElementRef}>
+        <NewTweetForm dispatch={dispatch as DispatchFunctionType} editTweetHandler={editTweet} editTweetData={editTweetData as EditTweetInformationType}/>
+        <TweetList tweetList={tweetList as TweetType[]} dispatch={dispatch as DispatchFunctionType} handleTweetEdit={editTweetHandler}/>
+    </div>
+  )
+}
+
+export default FeedContainer;

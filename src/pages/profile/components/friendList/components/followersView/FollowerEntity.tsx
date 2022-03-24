@@ -1,11 +1,19 @@
 import React from 'react';
 import "./followersView.css";
 import "./followerEntity.css";
-import profilePic from "../../../../../../resources/batman2.jpeg";
+import { UserType , ToggleFollowingType} from '../../FriendList';
+const profilePic = require("../../../../../../resources/batman2.jpeg");
+
+type FollowerEntityProps = {
+    user : UserType,
+    isFollowing : boolean,
+    isGrid : boolean,
+    toggleFollowing : ToggleFollowingType,
+}
 
 
 
-const FollowerEntity = ({user,isFollowing,isGrid,toggleFollowing})=>{
+const FollowerEntity = ({user,isFollowing,isGrid,toggleFollowing}:FollowerEntityProps)=>{
 
     const buttonTask = isFollowing?"Unfollow":"Follow";
 

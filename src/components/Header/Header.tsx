@@ -4,9 +4,15 @@ import AppsIcon from '@mui/icons-material/Apps';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import './header.css';
 
-function Header({shouldShowToggleButton,isGrid,toggleView}) {
+type HeaderProps = {
+    shouldShowToggleButton : boolean,
+    isGrid? : boolean,
+    toggleView? : ()=>void, 
+}
 
-    const button = (
+function Header({shouldShowToggleButton,isGrid,toggleView}:HeaderProps) : JSX.Element {
+
+    const button : JSX.Element = (
         <button type="button" className="page-header__view-toggle-button" onClick={toggleView}>
             {isGrid?<AppsIcon />:<FormatListBulletedIcon/>}
         </button>

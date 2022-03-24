@@ -1,14 +1,36 @@
 import React, { useCallback } from 'react';
 import './tweetEntity.css';
-import picture from '../../../../../../../../resources/batman-dp.jpeg';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ShareIcon from '@mui/icons-material/Share';
 import EditIcon from '@mui/icons-material/Edit';
 import getPic from '../../../../../../../../utils/getPic';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { ACTIONS } from '../../../../../../../../data/constants';
+const picture = require("../../../../../../../../resources/batman-dp.jpeg");
 
-function TweetEntity({tweet,dispatch,handleTweetEdit}) {
+type TweetType = {
+    id: string, 
+    userhandle: string, 
+    username: string, 
+    profilepic:string, 
+    text: string, 
+    image: string,
+    timestamp: number,
+}
+
+type EditTweetHandlerType = {
+    tweetId:string,
+    text:string,
+    image:string,
+  };
+
+type TweetListType = {
+    tweet: TweetType,
+    dispatch: (action:object)=>object,
+    handleTweetEdit: ({tweetId,text,image}:EditTweetHandlerType)=>void,
+}
+
+function TweetEntity({tweet,dispatch,handleTweetEdit}:TweetListType) {
 
     const handleDelete = useCallback(()=>{
         dispatch(

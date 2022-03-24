@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import './profileInformation.css';
 import ProfileDataViewer from './components/profileDataViewer';
 import ProfileImageViewer from './components/profileImageViewer';
@@ -16,4 +16,4 @@ function ProfileInformation() {
   )
 }
 
-export default ProfileInformation
+export default ProfileInformation;

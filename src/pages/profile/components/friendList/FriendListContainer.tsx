@@ -5,7 +5,7 @@ import { ACTIONS } from '../../../../data/constants';
 
 const userhandle = "userhandle";
 
-function FriendListContainer({isGrid}) {
+function FriendListContainer({isGrid}:{isGrid:boolean}) {
 
   const {dispatch,getFollowerList} = useUserData();
 
@@ -20,7 +20,7 @@ function FriendListContainer({isGrid}) {
       }};
     if(currentFollowing)
       action.type=ACTIONS.UNFOLLOW;
-    dispatch(action);
+    (dispatch as React.Dispatch<object>)(action);
   },[dispatch]);
 
   return (

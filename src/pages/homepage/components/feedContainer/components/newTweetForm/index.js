@@ -1,1 +1,1 @@
-export {default} from "./NewTweetForm.js";
+export {default} from "./NewTweetForm";

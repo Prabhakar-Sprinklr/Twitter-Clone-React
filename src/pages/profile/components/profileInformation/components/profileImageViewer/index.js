@@ -1,1 +1,1 @@
-export {default} from "./ProfileImageViewer.js";
+export {default} from "./ProfileImageViewer";

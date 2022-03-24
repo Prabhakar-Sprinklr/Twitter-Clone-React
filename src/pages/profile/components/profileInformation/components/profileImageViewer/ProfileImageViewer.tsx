@@ -1,6 +1,6 @@
-import React from 'react'
-import profilePic from '../../../../../../resources/batman-dp.jpeg'
-import './profileImageViewer.css'
+import React from 'react';
+import './profileImageViewer.css';
+const profilePic = require('../../../../../../resources/batman-dp.jpeg');
 
 
 function ProfileImageViewer() {
