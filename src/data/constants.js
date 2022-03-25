@@ -86,6 +86,31 @@ export const INIT_USER_LIST = [
     {userhandle: 'userhandle1', username: 'Username1', profilepic: 'batman-dp.jpeg', followers: [], following: ['userhandle']},
     {userhandle: 'userhandle2', username: 'Username2', profilepic: 'batman-dp.jpeg', followers: [], following: ['userhandle']},
 ];
+
+export const INIT_USER = {
+    userhandle: 'userhandle', 
+    username: 'Username', 
+    profilepic: 'batman-dp.jpeg', 
+    followers: [
+            {
+                userhandle: "userhandle0",
+                username: "Username0",
+                profilepic: "batman-dp.jpeg",
+            },
+            {
+                userhandle: "userhandle1",
+                username: "Username1",
+                profilepic: "batman-dp.jpeg",
+            },
+            {
+                userhandle: "userhandle2",
+                username: "Username2",
+                profilepic: "batman-dp.jpeg",
+            },
+        ], 
+    following: []
+    };
+
 export const ACTIONS = {
     FOLLOW:'follow',
     UNFOLLOW:'unfollow',

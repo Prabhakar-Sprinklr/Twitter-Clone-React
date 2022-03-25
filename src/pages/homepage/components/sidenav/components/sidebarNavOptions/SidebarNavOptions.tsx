@@ -1,16 +1,13 @@
 import React from 'react';
 import './sidebarNavOptions.css';
-import {
-    HomeIcon
-} from '../../../../../../data/buttons';
 
-type Props = {
+type SidebarNavOptionsProps = {
     link : string,
     Icon : React.ElementType,
     text : string,
 }
 
-function SidebarNavOptions({link , Icon, text}:Props) {
+function SidebarNavOptions({link , Icon, text}:SidebarNavOptionsProps) {
   return (
     <li>
         <a href={link} className='sidebar__navigation-link'>

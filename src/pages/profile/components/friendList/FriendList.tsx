@@ -3,32 +3,7 @@ import './friendList.css'
 import SectionHeader from "../sectionHeader";
 import FollowersView from './components/followersView';
 
-type FollowerDataType = {
-    userhandle : string,
-    username : string,
-    profilepic : string,
-};
-
-export type UserType = {
-    userhandle:string,
-    username:string,
-    profilepic:string,
-    followers: FollowerDataType[],
-    following: string[],
-};
-
-type FollowerType = {
-    follower:UserType,
-    isFollowing:boolean,
-}
-
-export type ToggleFollowingType = (followerid:string,currentFollowing:boolean)=>void;
-
-export type FriendListProps = {
-    isGrid : boolean,
-    followers : FollowerType[],
-    toggleFollowing : ToggleFollowingType,
-}
+import { FriendListProps} from "./types";
 
 function FriendList({isGrid,followers,toggleFollowing}:FriendListProps) {
     return (

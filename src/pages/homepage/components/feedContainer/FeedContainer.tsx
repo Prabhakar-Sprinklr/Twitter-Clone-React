@@ -6,36 +6,8 @@ import TweetList from './components/tweetList';
 import { INIT_TWEET_LIST } from '../../../../data/constants';
 import useLocalStorage from '../../../../hooks/useLocalStorage';
 import reducer from "./reducer";
+import {EditTweetInformationType, EditTweetParameterType, EditTweetHandlerType, TweetType, DispatchFunctionType} from "./types";
 
-type EditTweetInformationType = {
-    tweetId : string,
-    tweetText : string,
-    imageName : string,
-};
-
-type EditTweetParameterType = {
-    id : string,
-    text : string,
-    image : string,
-};
-
-type EditTweetHandlerType = {
-  tweetId:string,
-  text:string,
-  image:string,
-};
-
-type TweetType = {
-  id: string, 
-  userhandle: string, 
-  username: string, 
-  profilepic:string, 
-  text: string, 
-  image: string,
-  timestamp: number,
-}
-
-type DispatchFunctionType = (action: object) => object;
 
 function FeedContainer() {
 

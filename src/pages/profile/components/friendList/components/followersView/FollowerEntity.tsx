@@ -1,17 +1,15 @@
 import React from 'react';
 import "./followersView.css";
 import "./followerEntity.css";
-import { UserType , ToggleFollowingType} from '../../FriendList';
+import { ToggleFollowingType, FollowerDataType} from '../../types';
 const profilePic = require("../../../../../../resources/batman2.jpeg");
 
 type FollowerEntityProps = {
-    user : UserType,
+    user : FollowerDataType,
     isFollowing : boolean,
     isGrid : boolean,
     toggleFollowing : ToggleFollowingType,
 }
-
-
 
 const FollowerEntity = ({user,isFollowing,isGrid,toggleFollowing}:FollowerEntityProps)=>{
 

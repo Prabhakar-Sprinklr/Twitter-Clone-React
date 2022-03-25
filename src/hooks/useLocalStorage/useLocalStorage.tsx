@@ -2,10 +2,10 @@ import { useEffect, useReducer } from "react";
 
 type InitParam = {
     key:string,
-    fallback_value:object[],
+    fallback_value:object[] | object,
 };
 
-type ReducerType = (state:object[],action:object)=>object[];
+type ReducerType = (state:object[] | object ,action:object)=>object[] | object;
 
 const init_func = (param:InitParam)=>{
     const {key,fallback_value} = param;
@@ -14,7 +14,7 @@ const init_func = (param:InitParam)=>{
     return JSON.parse(localStorage.getItem(key) as string);
 };
 
-const useLocalStorage = (key:string,initial_value:object[],reducer_function:ReducerType)=>{
+const useLocalStorage = (key:string,initial_value:object[] | object,reducer_function:ReducerType)=>{
     const [state,dispatch] = useReducer(reducer_function,{key,fallback_value:initial_value},init_func);
     
     useEffect(()=>{

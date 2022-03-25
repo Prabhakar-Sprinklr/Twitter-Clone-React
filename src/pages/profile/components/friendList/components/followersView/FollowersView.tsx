@@ -1,7 +1,7 @@
 import React from 'react'
 import FollowerEntity from './FollowerEntity'
 import "./followersView.css";
-import {FriendListProps as FollowersViewProps} from "../../FriendList";
+import {FriendListProps as FollowersViewProps} from "../../types";
 
 function FollowersView({followers,isGrid,toggleFollowing}:FollowersViewProps) {
     return (

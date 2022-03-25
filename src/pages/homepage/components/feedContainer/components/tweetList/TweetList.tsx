@@ -1,30 +1,15 @@
 import { memo } from 'react';
 import TweetEntity from './components/tweetEntity';
 import './tweetList.css';
+import {TweetType, EditTweetHandlerType} from "../../types";
 
-type EditTweetHandlerType = {
-    tweetId:string,
-    text:string,
-    image:string,
-  };
-
-type TweetType = {
-    id: string, 
-    userhandle: string, 
-    username: string, 
-    profilepic:string, 
-    text: string, 
-    image: string,
-    timestamp: number,
-}
-
-type TweetListType = {
+type TweetListProps = {
     tweetList: TweetType[],
     dispatch: (action:object)=>object,
     handleTweetEdit: ({tweetId,text,image}:EditTweetHandlerType)=>void,
 }
 
-function TweetList({tweetList,dispatch,handleTweetEdit}:TweetListType) {
+function TweetList({tweetList,dispatch,handleTweetEdit}:TweetListProps) {
   return (
     <div>
         <ul className='tweet-list'>

@@ -6,31 +6,16 @@ import EditIcon from '@mui/icons-material/Edit';
 import getPic from '../../../../../../../../utils/getPic';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { ACTIONS } from '../../../../../../../../data/constants';
+import {TweetType, EditTweetHandlerType} from "../../../../types";
 const picture = require("../../../../../../../../resources/batman-dp.jpeg");
 
-type TweetType = {
-    id: string, 
-    userhandle: string, 
-    username: string, 
-    profilepic:string, 
-    text: string, 
-    image: string,
-    timestamp: number,
-}
-
-type EditTweetHandlerType = {
-    tweetId:string,
-    text:string,
-    image:string,
-  };
-
-type TweetListType = {
+type TweetEntityProps = {
     tweet: TweetType,
     dispatch: (action:object)=>object,
     handleTweetEdit: ({tweetId,text,image}:EditTweetHandlerType)=>void,
 }
 
-function TweetEntity({tweet,dispatch,handleTweetEdit}:TweetListType) {
+function TweetEntity({tweet,dispatch,handleTweetEdit}:TweetEntityProps) {
 
     const handleDelete = useCallback(()=>{
         dispatch(
